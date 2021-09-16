@@ -1,0 +1,220 @@
+.adminItems_container{
+    margin: 30px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+}
+
+.adminItems_container .admin_inputCard{
+    padding: 10px;
+    height: 100px;
+    font-size: 20px;
+    background-color: whitesmoke;
+    font-weight: 500;
+}
+
+.adminItems_container .admin_inputCard form{
+    display: flex;
+    margin-top: 20px;
+
+}
+
+.adminItems_container .admin_inputCard form input, label{
+    margin-left: 10px;
+}
+
+.adminItems_container .admin_inputCard form input{
+    width: 180px;
+    border-radius: 2px;
+}
+
+.adminItems_container .add_product form {
+    max-width: 300px;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background: #f4f7f8;
+    border-radius: 8px;
+  }
+  
+.adminItems_container .add_product  h1 {
+    margin: 0 0 30px 0;
+    text-align: center;
+  }
+  
+  .adminItems_container .add_product input[type="text"],
+  input[type="password"],
+  input[type="date"],
+  input[type="datetime"],
+  input[type="email"],
+  input[type="number"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="time"],
+  input[type="url"],
+  textarea,
+  select {
+    background: rgba(255,255,255,0.1);
+    border: none;
+    font-size: 16px;
+    height: auto;
+    margin: 0;
+    outline: 0;
+    padding: 15px;
+    width: 100%;
+    background-color: #e8eeef;
+    color: #8a97a0;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 30px;
+  }
+
+
+  .adminItems_container .add_product button {
+    padding: 19px 39px 18px 39px;
+    color: #FFF;
+    background-color: #4bc970;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid #3ac162;
+    border-width: 1px 1px 3px;
+    box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+    margin-bottom: 10px;
+  }
+  
+.adminItems_container .add_product fieldset {
+    margin-bottom: 30px;
+    border: none;
+  }
+    
+  .adminItems_container .add_product label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+
+  .product_container .product_card{
+    box-shadow: 0 0 15px -2px #444444;
+    margin: 20px;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .product_container .product_card .product_buttons{
+    display: flex;
+  }
+
+  .product_container .product_card .product_details{
+    display: flex;
+    align-items: center;
+  }
+
+  .product_container .product_card span{
+    margin-left: 40px;
+    width: 180px;
+  }
+
+  .product_container .product_card img{
+    width: 200px;
+  }
+
+
+
+
+.product_container  .btn {
+    box-sizing: border-box;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    background-color: transparent;
+    border: 2px solid #e74c3c;
+    border-radius: 0.6em;
+    color: #e74c3c;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-self: center;
+        -ms-flex-item-align: center;
+            align-self: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: 10px;
+    padding: 1.2em 1.6em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+  }
+  .product_container .btn:hover, .btn:focus {
+    color: #fff;
+    outline: 0;
+  }
+  
+  .product_container .first {
+    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+  }
+  .product_container .first:hover {
+    box-shadow: 0 0 40px 40px #e74c3c inset;
+  }
+
+
+  
+.product_container  .btn2 {
+  box-sizing: border-box;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: transparent;
+  border: 2px solid blue;
+  border-radius: 0.6em;
+  color: blue;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 20px;
+  padding: 1.2em 1.6em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+.product_container .btn2:hover, .btn2:focus {
+  color: #fff;
+  outline: 0;
+}
+
+.product_container .second {
+  -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+.product_container .second:hover {
+  box-shadow: 0 0 40px 40px blue inset;
+}
+  
+
+
+
+
+ 
+  @media screen and (min-width: 480px) {
+  
+    .adminItems_container .add_product form {
+      max-width: 480px;
+    }
+  
+  }
+  

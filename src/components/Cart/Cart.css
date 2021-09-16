@@ -1,0 +1,197 @@
+.cart_page .cart_container{
+    display: flex;
+}
+.cart_page .loader{
+    position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}
+
+
+.cart_page .cart_container .cart_details{
+    margin: 40px;
+}
+
+
+.cart_page .cart_container .cart_details .cart_card{
+    width: 700px;    
+    background-color: whitesmoke;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    -o-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    margin: 20px 10px;
+}
+
+
+
+.cart_page .cart_container .cart_details .cart_card img{
+    width: 300px;
+}
+
+.cart_page .cart_container .cart_details .cart_card .cost_details {
+    margin-left: 30px;
+}
+.cart_page .cart_container .cart_details .cart_card .cost_details h2{
+    font-size: 20px;
+    font-weight: 700;
+}
+.cart_page .cart_container .cart_details .cart_card .cost_details h3{
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.cart_page .cart_container .cart_details .cart_card .cost_details .drop_down select{
+    margin-top: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0 0 5px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.6);
+    -o-box-shadow: 0 0 5px rgba(0,0,0,0.6);
+    border-radius: 8px;
+    padding: 5px;
+    width: 75px;
+}
+
+.cart_page .cart_container .cart_payment .payment_container{
+    margin-top: 60px;
+    padding: 20px;
+    width: 450px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0 0 5px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.6);
+    -o-box-shadow: 0 0 5px rgba(0,0,0,0.6);
+    
+
+}
+.cart_page .cart_container .cart_payment .payment_container .cart_main{
+    text-align: right;
+    
+}
+
+
+.cart_page .cart_container .cart_payment .payment_container .payment_card{
+    display: flex;
+    padding: 10px;   
+}
+.cart_page .cart_container .cart_payment .payment_container .payment_card p{
+    text-align: right;
+    width: 100px;
+    font-size: 15px;
+    font-weight: 600;
+    
+}
+
+.cart_page .cart_container .cart_payment .payment_container .heading{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+.cart_page .cart_container .cart_payment .payment_container .total p{
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+.cart_page .cart_container .cart_payment .payment_container .total{
+    display: flex;
+    margin-left: 119px;
+    
+}
+
+.cart_page .cart_container .cart_payment .payment_container .order_button{
+    text-align: right;
+    margin: 10px;
+}
+
+/* only animate if the device supports hover */
+@media (hover: hover) {
+    #creditcard {
+      /*  set start position */
+      transform: translateY(110px);
+      transition: transform 0.1s ease-in-out;
+      /*  set transition for mouse enter & exit */
+    }
+  
+    #money {
+      /*  set start position */
+      transform: translateY(180px);
+      transition: transform 0.1s ease-in-out;
+      /*  set transition for mouse enter & exit */
+    }
+  
+    .cart_page .cart_container .cart_payment .payment_container button:hover #creditcard {
+      transform: translateY(0px);
+      transition: transform 0.2s ease-in-out;
+      /*  overide transition for mouse enter */
+    }
+  
+    .cart_page .cart_container .cart_payment .payment_container button:hover #money {
+      transform: translateY(0px);
+      transition: transform 0.3s ease-in-out;
+      /*  overide transition for mouse enter */
+    }
+  }
+  
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-0.25rem);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .cart_page .cart_container .cart_payment .payment_container .button:hover .button__text span {
+    transform: translateY(-0.25rem);
+    transition: transform .2s ease-in-out;
+  }
+  
+  /* styling */
+  
+  @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
+  
+  .cart_page .cart_container .cart_payment .payment_container body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .cart_page .cart_container .cart_payment .payment_container .button {
+    border: none;
+    outline: none;
+    background-color: purple;
+    padding: 1rem 90px 1rem 2rem;
+    position: relative;
+    border-radius: 8px;
+    letter-spacing: 0.7px;
+    background-color: #5086bd;
+    color: #fff;
+    font-size: 21px;
+    font-family: "Lato", sans-serif;
+    cursor: pointer;
+    box-shadow: rgba(0, 9, 61, 0.2) 0px 4px 8px 0px;
+  }
+  
+  .cart_page .cart_container .cart_payment .payment_container .button:active {
+    transform: translateY(1px);
+  }
+  
+  .cart_page .cart_container .cart_payment .payment_container .button__svg {
+    position: absolute;
+    overflow: visible;
+    bottom: 6px;
+    right: 0.2rem;
+    height: 140%;
+  }
+  
