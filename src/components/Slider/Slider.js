@@ -9,9 +9,9 @@ function Slider() {
     return (
         <div className="slider_page">
             <div className="slider_container">
-                <Carousel className="carousel" autoPlay={true} showThumbs={false} interval={5000} autoPlay={true} infiniteLoop={true}>
+                <Carousel className="carousel" autoPlay={true} showThumbs={false} interval={5000} infiniteLoop={true}>
                     <div className="slides">
-                        <img src={slide1} />
+                        <img src={slide1} alt="" />
                         {/* <Fade>
                             <div className="slide1_detail">
                                 <h1>VG</h1>
@@ -21,7 +21,7 @@ function Slider() {
                         </Fade> */}
                     </div>
                     <div className="slides">
-                        <img src={slide2} />
+                        <img src={slide2} alt="" />
 
                         {/* <div className="slide2_detail">
                             <h1>Book Your Order</h1>
@@ -30,7 +30,7 @@ function Slider() {
                         </div> */}
                     </div>
                     <div className="slides">
-                        <img src={slide3} />
+                        <img src={slide3} alt="" />
 
                         {/* <div className="slide2_detail">
                             <h1>Fast Delivery</h1>

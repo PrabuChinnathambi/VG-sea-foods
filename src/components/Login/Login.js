@@ -166,7 +166,7 @@ function Login() {
                                 <h1 className="heading">Sign in</h1>
                                 <input type="email" placeholder="Email" name="email" value={signIn.email} onChange={handleSignInChange} />
                                 <input type="password" placeholder="Password" name="password" value={signIn.password} onChange={handleSignInChange} />
-                                <a href="#">Forgot your password?</a>
+                                {/* <a href="">Forgot your password?</a> */}
                                 <button onClick={handleLogin}>Log In</button>
                             </form>
                         </div>

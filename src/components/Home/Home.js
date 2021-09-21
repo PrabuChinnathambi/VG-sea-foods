@@ -5,10 +5,10 @@ import Axios from 'axios';
 import { Link } from 'react-router-dom';
 import FadeLoader from "react-spinners/FadeLoader";
 import PulseLoader from "react-spinners/PulseLoader";
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 import OpenPage from '../OpenPage/OpenPage';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { ButtonBase, Button, Slider } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import SliderVal from '../Slider/Slider';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -26,12 +26,12 @@ function Home() {
 
     const [productsData, setProductsData] = useState([]);
     const [cartCount, setCartCount] = useState(0);
-    const [cartItems, setCartItems] = useState([]);
+    // const [cartItems, setCartItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [cartDatacheck, setcartDatacheck] = useState([])
     const [loader, setLoader] = useState([]);
 
-    const userVal = useSelector((state) => state.user);
+    // const userVal = useSelector((state) => state.user);
     // console.log(userVal);
 
     let userCart = JSON.parse(localStorage.getItem("userData"));
@@ -59,7 +59,6 @@ function Home() {
 
 
     useEffect(() => {
-
         getProducts();
         getUserCart();
 
@@ -67,7 +66,7 @@ function Home() {
 
     const getProducts = async () => {
 
-        const response = await Axios.get("https://vgseafoods.herokuapp.com/getItemData")
+        await Axios.get("https://vgseafoods.herokuapp.com/getItemData")
             .then(res => {
                 console.log(res);
                 setProductsData(res.data);
@@ -107,9 +106,9 @@ function Home() {
 
         cartDatacheck.map(item => {
             if (item.product_id === res._id) {
-                productcheck = true
+               return productcheck = true;
             }
-        })
+        });
 
         const cartItem = {
             product_id: res._id,
