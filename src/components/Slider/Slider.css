@@ -1,16 +1,15 @@
 
 .slider_page .slider_container .carousel .slides{
     display: flex;
-    position: relative;
 }
 /* .slider_page .slider_container .carousel .slides .slide1_detail{
     position: absolute;
     padding: 10px;
-    top:50px;
-    right: 100px;
-    border: 5px solid white;
-    width: 400px;
-}
+    top:200px;
+    right: 330px;
+    border: 5px solid white; 
+    width: 600px;
+} 
 .slider_page .slider_container .carousel .slides .slide1_detail h1{
     font-size: 100px;
     font-weight: 900;
@@ -41,14 +40,13 @@
     font-size: 20px;
     font-weight: 800;
     color: white;
-} */
-
+}  */
 
 
 
 @media only screen and (max-width: 600px) {
     .slider_page .slider_container .carousel{
-        width: 460px;
+        width: 500px;
     }
     .slider_page .slider_container .carousel img{
         width: 100%;

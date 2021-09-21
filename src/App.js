@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import About from "./components/About/About";
 import AdminItems from "./components/Admin/AdminItemPage/AdminItems";
 import AdminHome from "./components/Admin/AdminLogin/AdminHome";
+import OrderDetails from "./components/Admin/AdminOrderdetails/OrderDetails";
 import Cart from "./components/Cart/Cart";
 import Contact from "./components/Contact/Contact";
 import Home from "./components/Home/Home";
@@ -24,6 +25,7 @@ function App() {
           <Route path="/cart" component={Cart} ></Route>
           <Route path="/admin" component={AdminHome} ></Route>
           <Route path="/adminItems" component={AdminItems} ></Route>
+          <Route path="/orderdetails" component={OrderDetails} ></Route>
         </Switch>
       </Router>
     </div>

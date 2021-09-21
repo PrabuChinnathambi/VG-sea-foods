@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './AdminItems.css';
 import Axios from 'axios';
 import OpenPage from '../../OpenPage/OpenPage';
+import { Link } from 'react-router-dom';
 
 
 
@@ -34,7 +35,7 @@ function AdminItems() {
 
 
     const getProducts = () => {
-        Axios.get("http://localhost:8000/getItemData")
+        Axios.get("https://vgseafoods.herokuapp.com/getItemData")
             .then(res => {
                 console.log(res);
                 SetProducts(res.data);
@@ -76,7 +77,7 @@ function AdminItems() {
             image: image
         }
 
-        Axios.post('http://localhost:8000/postItemData', payload)
+        Axios.post('https://vgseafoods.herokuapp.com/postItemData', payload)
             .then((result) => {
                 getProducts();
             })
@@ -94,7 +95,7 @@ function AdminItems() {
         }
 
         console.log(payload);
-        Axios.post("http://localhost:8000/deleteproduct", payload)
+        Axios.post("https://vgseafoods.herokuapp.com/deleteproduct", payload)
             .then(res => {
                 // console.log(res);
                 getProducts();
@@ -124,7 +125,7 @@ function AdminItems() {
             quantity: quantity
         }
 
-        Axios.post("http://localhost:8000/updateproduct", payload)
+        Axios.post("https://vgseafoods.herokuapp.com/updateproduct", payload)
             .then(res => {
                 SetProducts("");
                 getProducts();
@@ -138,10 +139,11 @@ function AdminItems() {
 
     return (
         <div className="adminItems_page">
-            <div>
+            <div className="nav">
                 <OpenPage />
             </div>
             <div className="adminItems_container">
+                <Link to="orderdetails">OrderDetails</Link>
                 <div className="add_product">
                     <div className="row">
                         <div className="col-md-12">

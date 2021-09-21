@@ -27,7 +27,7 @@ function Login() {
 
 
     const user = useSelector((state) => state.user);
-    
+
 
     const handleToggle = () => {
         setToggle(!toggle)
@@ -59,21 +59,21 @@ function Login() {
                 email: signIn.email,
                 password: signIn.password
             }
-            Axios.post('http://localhost:8000/loginUser', payload)
+            Axios.post('https://vgseafoods.herokuapp.com/loginUser', payload)
                 .then(res => {
                     dispatch(setUser(res.data.userData));
                     localStorage.setItem("token", res.data.token);
                     console.log(localStorage.getItem("token"));
-                    
+
                     setSignIn({
                         email: "",
                         password: ""
                     })
-                    
+
                     history.push('/home');
                     // history.go(0)
                 }).catch(err => {
-                    const Error = () => toast(err.response.data.message);
+                    const Error = () => toast(err);
                     Error();
 
                 })
@@ -111,22 +111,23 @@ function Login() {
                 confirmPassword: signUp.confirmPassword
             }
 
-            await Axios.post('http://localhost:8000/registerUser', payload)
+            await Axios.post('https://vgseafoods.herokuapp.com/registerUser', payload)
                 .then(data => {
-                    console.log(data);
-                    const signUpSuccess = () => toast("You have registerd successfully!");
-                    signUpSuccess();
-                    setSignUp({
-                        email: "",
-                        phoneNumber: "",
-                        password: "",
-                        confirmPassword: ""
-                    })
-                    setToggle(!toggle);
-
+                console.log(data);
+                const signUpSuccess = () => toast("You have registerd successfully!");
+                signUpSuccess();
+                setSignUp({
+                    email: "",
+                    phoneNumber: "",
+                    password: "",
+                    confirmPassword: ""
                 })
+                setToggle(!toggle);
+
+            })
                 .catch(err => {
-                    const Error = () => toast(err.response.data.message);
+
+                    const Error = () => toast(err);
                     Error();
                 })
 
@@ -135,7 +136,7 @@ function Login() {
     }
 
     // console.log(user)
-    if(user){
+    if (user) {
         let userVal = JSON.stringify(user);
         console.log(user)
         localStorage.setItem("userData", userVal);

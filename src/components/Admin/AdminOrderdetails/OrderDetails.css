@@ -1,0 +1,62 @@
+.admin_orderPage .nav{
+    background-color: black;
+}
+
+.admin_orderPage .order_container{
+    overflow-y:scroll;
+    height: 480px;
+
+    margin: 20px;
+}
+.admin_orderPage .order_container .orders{
+    display: flex;
+    position: relative;
+    margin: 30px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    background-color: whitesmoke;
+    padding: 10px;
+}
+.admin_orderPage .order_container label, p{
+    font-size: 18px;
+    margin-left: 10px;
+    font-weight: 600;
+}
+.admin_orderPage .order_container .name{
+    width: 80px;
+}
+.admin_orderPage .order_container .phone{
+    width: 100px;
+    
+}
+.admin_orderPage .order_container .address{
+    width: 200px;
+    
+}
+.admin_orderPage .order_container .btn{
+    width: 150px;
+    height: 50px;
+    margin: 0px 30px;
+}
+
+.admin_orderPage .order_container .orders .dropdown-menu .dropdown_list{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    width: 300px;
+    height: 70px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+.admin_orderPage .order_container .orders .dropdown-menu .dropdown_list .name{
+    width: 150px;
+}
+.admin_orderPage .order_container .orders .dropdown-menu .dropdown_list p{
+    margin-right: 20px;
+    font-size: 15px;
+}
+
+.admin_orderPage .order_container .orders .amount{
+    position: absolute;
+    display: flex;
+    right: 120px;
+    bottom: 10px;
+}

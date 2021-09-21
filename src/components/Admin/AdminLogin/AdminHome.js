@@ -20,7 +20,7 @@ function AdminHome() {
             password: password
         }
 
-        Axios.post("http://localhost:8000/loginAdmin", payload)
+        Axios.post("https://vgseafoods.herokuapp.com/loginAdmin", payload)
             .then((result) => {
                 let cnfm = result.data.message;
                 if(cnfm === "Success"){
@@ -30,8 +30,8 @@ function AdminHome() {
     }
 
     return (
-        <div>
-            <div>
+        <div className="admin_login">
+            <div className="nav">
                 <OpenPage />
             </div>
             <div>

@@ -21,6 +21,7 @@ function About() {
             </div>
             <div className="about_container">
                 <div className="aboutImg">
+                    <link className="image" rel="preload" as="image" href={aboutImg}></link>
                     <img src={aboutImg} alt="img" />
                 </div>
                 <div className="about_greeting">
@@ -51,7 +52,7 @@ function About() {
                     </div>
                 </div>
 
-                {/* <Link to="/admin">Admin</Link> */}
+                <Link to="/admin">Admin</Link>
             </div>
             <div>
                 <Footer />

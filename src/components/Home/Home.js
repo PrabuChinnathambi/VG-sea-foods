@@ -4,6 +4,7 @@ import './Home.css';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
 import FadeLoader from "react-spinners/FadeLoader";
+import PulseLoader from "react-spinners/PulseLoader";
 import { useSelector } from 'react-redux'
 import OpenPage from '../OpenPage/OpenPage';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -18,6 +19,8 @@ import deliciousDelivery from '../../images/Icons/delicious.png';
 import cart from '../../images/Icons/shopping-cart.png';
 import Footer from '../Footer/Footer';
 
+import Flip from 'react-reveal/Flip';
+
 
 function Home() {
 
@@ -25,13 +28,14 @@ function Home() {
     const [cartCount, setCartCount] = useState(0);
     const [cartItems, setCartItems] = useState([]);
     const [loading, setLoading] = useState(true);
-
+    const [cartDatacheck, setcartDatacheck] = useState([])
+    const [loader, setLoader] = useState([]);
 
     const userVal = useSelector((state) => state.user);
     // console.log(userVal);
 
     let userCart = JSON.parse(localStorage.getItem("userData"));
-    // console.log(userCart);
+    console.log(userCart.cart);
 
 
 
@@ -48,7 +52,14 @@ function Home() {
         }
     )
 
+    //TimeOutcode
+    // setTimeout(() => {
+    //     this.setState({ loading: false });
+    //   }, 2000);
+
+
     useEffect(() => {
+
         getProducts();
         getUserCart();
 
@@ -56,7 +67,7 @@ function Home() {
 
     const getProducts = async () => {
 
-        const response = await Axios.get("http://localhost:8000/getItemData")
+        const response = await Axios.get("https://vgseafoods.herokuapp.com/getItemData")
             .then(res => {
                 console.log(res);
                 setProductsData(res.data);
@@ -65,6 +76,7 @@ function Home() {
                 console.log(err.response.data)
             })
 
+
     };
 
 
@@ -72,9 +84,10 @@ function Home() {
         const payload = {
             userId: userCart._id
         }
-        await Axios.post('http://localhost:8000/getUserCart', payload)
+        await Axios.post('https://vgseafoods.herokuapp.com/getUserCart', payload)
             .then((result) => {
-                console.log(result.data.cart.length);
+                console.log(result.data);
+                setcartDatacheck(result.data.cart);
                 setCartCount(result.data.cart.length);
             }).catch((err) => {
                 console.log(err);
@@ -82,12 +95,22 @@ function Home() {
     }
 
     const handleAddtocart = (res) => {
-        console.log(res)
+
+        setLoader(res._id)
+        // console.log(user._id);
+        // console.log(res._id);
+
+
         const user = JSON.parse(localStorage.getItem("userData"));
-        console.log(user._id);
 
+        var productcheck = false;
 
-        const userId = user._id;
+        cartDatacheck.map(item => {
+            if (item.product_id === res._id) {
+                productcheck = true
+            }
+        })
+
         const cartItem = {
             product_id: res._id,
             productName: res.productName,
@@ -97,31 +120,35 @@ function Home() {
 
         };
 
+        if (productcheck) {
+            toast.error('Product already added')
+            setLoader([])
+        } else {
+            cartDatacheck.push(cartItem)
+            const userId = user._id;
+            const payload = {
+                userId: userId,
+                cartItem: cartItem
+            }
 
-        const payload = {
-            userId: userId,
-            cartItem: cartItem
+            console.log(payload);
+
+            Axios.post("https://vgseafoods.herokuapp.com/addCart", payload)
+                .then(data => {
+                    console.log(data);
+                    setLoader([])
+                    toast.success("Successfully added into the cart", {
+                        position: toast.POSITION.TOP_CENTER
+                    })
+                    getUserCart();
+                })
+
         }
 
-        console.log(payload);
-
-        Axios.post("http://localhost:8000/addCart", payload)
-            .then(data => {
-                console.log(data);
-                toast.success("Successfully added into the cart", {
-                    position: toast.POSITION.TOP_CENTER
-                })
-                getUserCart();
-            })
-
-    }
-
-    const handleFinalCart = () => {
-
-
     }
 
 
+    console.log(loader);
 
 
     return (
@@ -140,7 +167,7 @@ function Home() {
                         <div className="home_container">
                             <Link to={{
                                 pathname: "/cart",
-                            }} onClick={() => { handleFinalCart() }}>
+                            }} >
                                 <div className="icon_float">
                                     <div className="add_cart">
                                         <img src={cart} alt="" />
@@ -153,29 +180,33 @@ function Home() {
                                     <SliderVal />
                                 </div>
                                 <div>
-                                    <div className="deliver_card">
-                                        <div>
-                                            <i><img src={fastDelivery} alt="icon" /></i>
-                                            <h2>Fast Delivery</h2>
-                                            <p>We are providing door step devlivery within a less time for main resion of customer satisfaction</p>
-                                        </div>
+                                    <Flip bottom delay={2000}>
+                                        <div className="deliver_card">
+                                            <div>
+                                                <i><img src={fastDelivery} alt="icon" /></i>
+                                                <h2>Fast Delivery</h2>
+                                                <p>We are providing door step devlivery within a less time for main resion of customer satisfaction</p>
+                                            </div>
+                                            <div className="saveDelivery">
 
-                                        <div className="saveDelivery">
-                                            <i><img src={saveDelivery} alt="icon" /></i>
-                                            <h2>Safe & Secure</h2>
-                                            <p>Mainly focusing for safe and secure to this process. We will provide our meat to your hand with safely and securely</p>
+                                                <i><img src={saveDelivery} alt="icon" /></i>
+                                                <h2>Safe & Secure</h2>
+                                                <p>Mainly focusing for safe and secure to this process.We will provide our meat to your hand with safely and securely</p>
+
+                                            </div>
+                                            <div>
+                                                <i><img src={deliciousDelivery} alt="icon" /></i>
+                                                <h2>Fresh Meat</h2>
+                                                <p>We are Assured to Fresh Meat.Every day you will get new and fresh meat only</p>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <i><img src={deliciousDelivery} alt="icon" /></i>
-                                            <h2>Fresh Meat</h2>
-                                            <p>We are Assured to Fresh Meat. Every day you will get new and fresh meat only</p>
-                                        </div>
+                                    </Flip>
+                                </div>
+                                <Flip bottom>
+                                    <div className="prod_details">
+                                        <h1>Product Details</h1>
                                     </div>
-                                </div>
-                                <div className="prod_details">
-                                    <h1>Product Details</h1>
-                                </div>
-
+                                </Flip>
                                 <div className="products">
                                     {
                                         productsData.map((res) => {
@@ -186,7 +217,7 @@ function Home() {
                                                     </div>
                                                     <div className="card_details">
                                                         <p className="product_name">{res.productName}</p>
-                                                        <p>Cost : ₹ {res.cost}/kg</p>
+                                                        <p className="product_cost">Cost : ₹ {res.cost}/kg</p>
                                                         <div className="star">
                                                             <span className="fa fa-star checked"></span>
                                                             <span className="fa fa-star checked"></span>
@@ -195,7 +226,9 @@ function Home() {
                                                             <span className="fa fa-star"></span>
                                                         </div>
                                                         <Button className="button" onClick={() => { handleAddtocart(res) }} variant="contained" color="primary">
-                                                            Add To Cart Haiiii
+                                                            {
+                                                                loader === res._id ? <span><PulseLoader color="white" size={10} ></PulseLoader></span> : <span>Add To Cart</span>
+                                                            }
                                                         </Button>
                                                     </div>
                                                 </div>
@@ -215,7 +248,7 @@ function Home() {
             <div>
             </div>
 
-        </div>
+        </div >
     )
 }
 

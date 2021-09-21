@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import './OpenPage.css';
-import Logo from '../../images/vg.png';
+import Logo from '../../images/newlogo2.png';
 import { Link } from 'react-router-dom';
 
 function OpenPage() {
     const [navcolor, setNavcolor] = useState(false);
 
     window.onscroll = () => {
-        if (document.body.scrollTop >= 350 || document.documentElement.scrollTop >= 350) {
-            console.log("scrolled")
+        if (document.body.scrollTop >= 300 || document.documentElement.scrollTop >= 300) {
+            // console.log("scrolled")
             setNavcolor(true);
         } else {
             setNavcolor(false)
@@ -22,7 +22,7 @@ function OpenPage() {
                     <div className="container-fluid">
                         <img src={Logo} alt="" />
                         <p className="name">Sea Foods</p>
-                        <button className="navbar-toggler bg-dark " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <button className="navbar-toggler bg-dark" type="button" data-toggle="collapse" data-target="#navbarNav">
                             <span className="navbar-toggler-icon"></span>
                         </button>
                         <div className="collapse navbar-collapse" id="navbarNav">

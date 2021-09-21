@@ -1,17 +1,18 @@
 .about_page .about_nav{
-    top:o;
+    top:0;
     width: 100%;
     position: fixed;
     z-index: 1000;
 }
 .about_page .about_container .aboutImg img{
-    width: 100%;
-    
+    width: 100%;   
+    opacity: 1;  
 }
 .about_container{
     position: relative;
 }
 .about_container .about_greeting{
+    opacity: 2;
     color: white;
     text-align: center;
     width: 800px;
@@ -19,15 +20,15 @@
     top:220px;
     right: 220px;
     line-height: 40px;
-    /* border-top: 1px solid white;
-    border-bottom: 1px solid white; */
+    border: 1px solid white;
     padding: 20px 30px;
-    backdrop-filter: blur(0.5px);
+    backdrop-filter: blur(3.5px);
 }
 .about_container .about_greeting h1{
     font-weight: 800;
 }
 .about_container .about_greeting p{
+    
     font-weight: 600;
     font-size: 20px;
 }
@@ -63,6 +64,66 @@
 }
 
 @media only screen and (max-width: 600px){
+    .about_page .about_container .aboutImg img{
+        width: 500px;   
+        height: 350px;
+    }
     
+    .about_container .about_greeting{
+        color: black;
+        text-align: center;
+        width: 400px;
+        position:unset;
+        top:0px;
+        right: 0px;
+        margin: 20px;
+        margin-left: 50px;
+        line-height: 30px;
+        
+    }
+    .about_container .about_greeting h1{
+        font-weight: 800;
+    }
+    .about_container .about_greeting p{
+        color:rgb(75, 74, 74);
+        font-weight: 600;
+        font-size: 16px;
+    }
 
+
+
+    .about_container .about_content{
+        margin-top: 20px;
+        margin-left: 50px;
+    }
+
+
+    .about_container .about_content .content_one img{
+        width: 350px;
+        margin-right: 0px;
+        filter: drop-shadow(0 0 0.75rem black);
+        margin-bottom: 20px;
+    }
+    .about_container .about_content .content_one{
+        display: block;
+        align-items: center;
+        margin-left: 0px;
+        margin-bottom: 50px;
+    }
+    .about_container .about_content .content_one .detail{
+        width: 370px;
+        line-height: 30px;
+        margin-right: 10px;
+        margin-bottom: 50px;
+    }
+    .about_container .about_content .content_one .detail h2{
+        font-size: 25px;
+        font-weight: 700;
+    }
+    .about_container .about_content .content_one .detail p{
+        font-weight: 600;
+        color: rgb(109, 108, 108);
+        margin-top: 30px;
+    }
+    
 }

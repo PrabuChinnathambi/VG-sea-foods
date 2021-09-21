@@ -8,3 +8,9 @@
     font-weight: 600;
     color: white;
 }
+
+@media only screen and (max-width: 600px){
+    .footer_page{
+        width: 500px;
+    }
+}

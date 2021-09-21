@@ -9,6 +9,18 @@
   height: 100%;
   z-index: 9999;
 }
+.cart_page .cartImg img{
+  margin-top: -300px;
+  width: 100%;
+  
+}
+.cart_page .cart_nav{
+  top:o;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  
+}
 
 
 .cart_page .cart_container .cart_details{
@@ -80,9 +92,11 @@
 }
 .cart_page .cart_container .cart_payment .payment_container .payment_card p{
     text-align: right;
+    /* border: 1px solid black; */
     width: 100px;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
+    margin-bottom: 0px;
     
 }
 

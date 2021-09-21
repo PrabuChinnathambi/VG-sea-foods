@@ -12,16 +12,17 @@ function Slider() {
                 <Carousel className="carousel" autoPlay={true} showThumbs={false} interval={5000} autoPlay={true} infiniteLoop={true}>
                     <div className="slides">
                         <img src={slide1} />
-                        
-                        {/* <div className="slide1_detail">
-                            <h1>VG</h1>
-                            <p>Sea Foods Festival</p>
-                            <p>We are in online Now 😃. We provides fresh seafood delivery right to your front door</p>
-                        </div> */}
+                        {/* <Fade>
+                            <div className="slide1_detail">
+                                <h1>VG</h1>
+                                <p>Sea Foods Festival</p>
+                                <p>We are in online Now 😃. We provides fresh seafood delivery right to your front door</p>
+                            </div>
+                        </Fade> */}
                     </div>
                     <div className="slides">
                         <img src={slide2} />
-                        
+
                         {/* <div className="slide2_detail">
                             <h1>Book Your Order</h1>
                             <p>We are Happily to deliver your Products.</p>
@@ -30,7 +31,7 @@ function Slider() {
                     </div>
                     <div className="slides">
                         <img src={slide3} />
-                        
+
                         {/* <div className="slide2_detail">
                             <h1>Fast Delivery</h1>
                             <p>Our products will be reach in your door steps</p>

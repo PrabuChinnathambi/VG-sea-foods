@@ -3,9 +3,33 @@ import Axios from 'axios';
 import { useSelector } from 'react-redux';
 import './Cart.css';
 import FadeLoader from "react-spinners/FadeLoader";
+import PulseLoader from "react-spinners/PulseLoader";
 import { IconButton } from '@material-ui/core';
-import { ButtonBase, Button } from '@material-ui/core';
+import { Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
 import OpenPage from '../OpenPage/OpenPage';
+import cartImg from '../../images/cartImg.jpg';
+import Footer from '../Footer/Footer';
+
+
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+
+
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+};
+
+
+
 
 function Cart() {
 
@@ -14,6 +38,18 @@ function Cart() {
     const [cartSumToggle, setCartSumToggle] = useState(true);
     const [total, setTotal] = useState(0);
     const [loading, setLoading] = useState(true);
+    const [open, setOpen] = React.useState(false);
+    const [addresDetails, setAddresDetails] = useState({
+        name: "",
+        phonenumber: "",
+        address: ""
+    });
+
+    const [deleteLoader, setDeleteLoader] = useState([]);
+
+    const [opensuccess, setOpensuccess] = React.useState(false);
+    const handleOpenSuccess = () => setOpensuccess(true);
+    const handleCloseSuccess = () => setOpensuccess(false);
 
 
     const userNew = JSON.parse(localStorage.getItem("userData"));
@@ -23,15 +59,22 @@ function Cart() {
     useEffect(() => {
         getCartData();
 
-
     }, [])
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     const getCartData = async () => {
         const payload = {
             userId: userId
         }
 
-        await Axios.post('http://localhost:8000/getUserCart', payload)
+        await Axios.post('https://vgseafoods.herokuapp.com/getUserCart', payload)
             .then((res) => {
                 // console.log(res.data.cart);
                 setUsertDatas(res.data);
@@ -39,7 +82,7 @@ function Cart() {
                 setLoading(false)
                 calculate(res.data.cart);
             }).catch(err => {
-                console.log(err.response.data.message);
+                console.log(err);
             })
     }
 
@@ -70,24 +113,81 @@ function Cart() {
     }
 
     const deleteCartProduct = (item) => {
+
+        setDeleteLoader(item.product_id);
         console.log(item)
         const payload = {
             userId: userId,
             product_id: item.product_id
         }
         console.log(payload)
-        Axios.post("http://localhost:8000/deleteCartProduct", payload)
+        Axios.post("https://vgseafoods.herokuapp.com/deleteCartProduct", payload)
             .then((result) => {
                 console.log(result);
+                setDeleteLoader([]);
                 getCartData();
             }).catch(err => {
-                console.log(err.response.data.message);
+                console.log(err);
             })
+    }
+
+    const handleAddressDetails = (e) => {
+        setAddresDetails({ ...addresDetails, [e.target.name]: e.target.value })
+
+    }
+
+    const handleDone = () => {
+        window.location.reload();
+    }
+
+    const handlesuccess = () => {
+        const timestamp = Date.now();
+
+        const payload = {
+            userInfo: userNew,
+            addressDetails: addresDetails,
+            orderDetails: cartData,
+            totalAmount: total,
+            time : timestamp
+        }
+
+        const userpayload = {
+            userId: userId
+        }
+        console.log(payload)
+
+        Axios.post("https://vgseafoods.herokuapp.com/bookOrder", payload)
+            .then(res => {
+                console.log(res);
+                Axios.post("https://vgseafoods.herokuapp.com/deleteAllCart", userpayload)
+                    .then(res => {
+                        console.log(res)
+                    }).catch(err => {
+                        console.log(err.message)
+                    })
+                handleOpenSuccess();
+
+            }).catch(err => {
+                console.log(err.message);
+            })
+
+        setAddresDetails({
+            name: "",
+            phonenumber: "",
+            address: ""
+        })
+        handleClose();
+        // console.log(addresDetails)
+        // console.log(cartData);
+        // console.log(total);
     }
 
     // console.log(total);
     // console.log(usertDatas);
     // console.log(cartData);
+    console.log(addresDetails.name);
+    console.log(addresDetails.phonenumber);
+    console.log(addresDetails.address);
 
 
     return (
@@ -99,16 +199,19 @@ function Cart() {
                     </div>
                 ) : (
                     <div>
-
-                        <div>
+                        <div className="cart_nav">
                             <OpenPage />
                         </div>
+                        <div className="cartImg">
+                            <img src={cartImg} alt="" />
+                        </div>
                         <div className="cart_container">
+
                             <div className="cart_details">
                                 {
                                     cartData.map(item => {
                                         return (
-                                            <div key={item._id} className="cart_card">
+                                            <div key={item.product_id} className="cart_card">
                                                 <img src={item.image} alt="image" />
                                                 <div className="cost_details">
                                                     <h2>{item.productName}</h2>
@@ -125,7 +228,9 @@ function Cart() {
                                                     </div>
                                                     <div>
                                                         <Button onClick={() => deleteCartProduct(item)} variant="contained" color="secondary">
-                                                            Delete
+                                                            {
+                                                                deleteLoader === item.product_id ? <span><PulseLoader color="white" size={10} ></PulseLoader></span> : <span>Delete</span>
+                                                            }
                                                         </Button>
                                                     </div>
                                                 </div>
@@ -161,11 +266,11 @@ function Cart() {
                                             <p>₹{total}</p>
                                         </div>
                                         <div className="order_button">
-                                            <button class="button">
-                                                <span class="button__text">
+                                            <button className="button" onClick={handleClickOpen}>
+                                                <span className="button__text">
                                                     <span>B</span><span>o</span>o</span><span>k</span><span> </span><span>O</span><span>r</span><span>d</span><span>e</span><span>r</span>
 
-                                                <svg class="button__svg" role="presentational" viewBox="0 0 600 600">
+                                                <svg className="button__svg" role="presentational" viewBox="0 0 600 600">
                                                     <defs>
                                                         <clipPath id="myClip">
                                                             <rect x="0" y="0" width="100%" height="50%" />
@@ -192,13 +297,85 @@ function Cart() {
 
                                                 </svg>
                                             </button>
+                                            <div>
+                                                <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" >
+                                                    <DialogTitle id="form-dialog-title">Order Details</DialogTitle>
+                                                    <DialogContent>
+                                                        <DialogContentText>
+                                                            Please fill the below details. We will provide your orders within short time.
+                                                        </DialogContentText>
+                                                        <TextField
+                                                            autoFocus
+                                                            id="name"
+                                                            label="Name"
+                                                            type="text"
+                                                            fullWidth
+                                                            style={{ marginBottom: "20px" }}
+                                                            name="name"
+                                                            value={addresDetails.name}
+                                                            onChange={(e) => handleAddressDetails(e)}
+                                                        />
+                                                        <TextField
+
+                                                            id="name"
+                                                            label="Phone Number"
+                                                            type="text"
+                                                            fullWidth
+                                                            style={{ marginBottom: "20px" }}
+                                                            name="phonenumber"
+                                                            value={addresDetails.phonenumber}
+                                                            onChange={handleAddressDetails}
+                                                        />
+                                                        <TextField
+                                                            label="Address"
+                                                            multiline
+                                                            fullWidth
+                                                            rows={5}
+                                                            rowsMax={4}
+                                                            name="address"
+                                                            value={addresDetails.address}
+                                                            style={{ marginBottom: "20px" }}
+                                                            onChange={handleAddressDetails}
+                                                        />
+
+                                                    </DialogContent>
+                                                    <DialogActions style={{ marginBottom: "20px", marginRight: "20px" }}>
+                                                        <Button onClick={handleClose} variant="contained" color="primary">
+                                                            Cancel
+                                                        </Button>
+                                                        <Button onClick={handlesuccess} variant="contained" color="primary">
+                                                            Order
+                                                        </Button>
+                                                    </DialogActions>
+                                                </Dialog>
+                                            </div>
                                         </div>
+                                        <Modal
+                                            open={opensuccess}
+                                            onClose={handleCloseSuccess}
+                                            aria-labelledby="modal-modal-title"
+                                            aria-describedby="modal-modal-description"
+                                        >
+                                            <Box sx={style}>
+                                                <Typography id="modal-modal-title" variant="h6" component="h2">
+                                                    You have ordered successfully...!!!
+                                                </Typography>
+                                                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                                                    We got your response. We will get back to you within a short time. Thanks for yor order.
+                                                </Typography>
+                                                <Button onClick={handleDone} variant="contained" color="primary">
+                                                    Done
+                                                </Button>
+
+                                            </Box>
+                                        </Modal>
 
                                     </div>
-
-
                                 </div>
                             </div>
+                        </div>
+                        <div>
+                            <Footer />
                         </div>
                     </div>
                 )
