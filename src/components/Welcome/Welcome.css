@@ -62,8 +62,8 @@
 
 @media only screen and (max-width: 600px){
     .welcome_page  {
-        background: none;
-        background-color: rgb(36, 35, 35); 
+        background: rgb(36, 35, 35) no-repeat center center fixed; 
+        /* background-color: rgb(36, 35, 35);  */
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
