@@ -68,6 +68,7 @@
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+        padding-bottom: 200px;
     }
     .welcome_page .logo{
         margin-left: 25px;
