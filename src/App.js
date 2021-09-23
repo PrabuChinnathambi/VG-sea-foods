@@ -8,6 +8,7 @@ import Contact from "./components/Contact/Contact";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import OpenPage from "./components/OpenPage/OpenPage";
+import Welcome from "./components/Welcome/Welcome";
 
 
 
@@ -17,13 +18,14 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/" component={Login} ></Route>
+          <Route exact path="/" component={Welcome} ></Route>
+          <Route path="/login" component={Login} ></Route>
           {/* <Route exact path="/" component={OpenPage} ></Route> */}
           <Route path="/home" component={Home} ></Route>
           <Route path="/about" component={About} ></Route>
           <Route path="/contact" component={Contact} ></Route>
           <Route path="/cart" component={Cart} ></Route>
-          <Route path="/admin" component={AdminHome} ></Route>
+          <Route path="/adminLogin" component={AdminHome} ></Route>
           <Route path="/adminItems" component={AdminItems} ></Route>
           <Route path="/orderdetails" component={OrderDetails} ></Route>
         </Switch>
