@@ -65,7 +65,7 @@
         background: none;
         background-color: rgb(36, 35, 35);
         width: 460px;
-        height: 500px;
+        height: 700px;
     }
     .welcome_page .logo{
         margin-left: 25px;
@@ -89,6 +89,11 @@
     .welcome_page .greeting_msg .greeting_body{
         width: 350px;
     }
+    .welcome_page .typewriter{
+        margin-top: 30px;
+        margin-left: 30px;
+    }
+    
     .welcome_page .typewriter h1{
         margin-left: 5px;
         font-size: 30px;
