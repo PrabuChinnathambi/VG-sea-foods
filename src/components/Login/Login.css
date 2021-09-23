@@ -121,9 +121,6 @@
  
 }
 
-/* .container.right-panel-active .overlay {
-  	transform: translateX(50%);
-} */
 
 .login_page .overlay-panel {
 	align-items: center;
@@ -136,21 +133,10 @@
 
 
 
-/* .overlay-right {
-	right: 0;
-	transform: translateX(0);
-} */
-
-/* .container.right-panel-active .overlay-right {
-	transform: translateX(20%);
-} */
-
 @media only screen and (max-width: 600px) {
 	.login_page {
 		padding: 5px;
 	}
-	
-	
 	.login_page .container {
         display: block;
 		width: 320px;
@@ -158,19 +144,28 @@
     }
     .login_page .form-container{
         width: 300px;
-		height: 450px;
+		height: 380px;
 		
     }
     .login_page .overlay{
 		width: 300px;
-		height: 400px;	
+		height: 330px;	
     }
 	.login_page .overlay-panel{
-		padding-top: 100px;
+		padding-top: 70px;
+	}
+	.login_page .form-container h1{
+		font-size: 20px;
 	}
     .login_page .form-container input{
-        width: 280px;
-        height: 40px;
+        width: 220px;
+        height: 10px;
+		border-radius: 5px;
     }
+	.login_page .container button {
+		font-size: 10px;
+		padding: 10px 25px;
+		
+	}
 }
 
