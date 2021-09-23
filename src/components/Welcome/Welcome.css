@@ -65,6 +65,7 @@
         background: none;
         background-color: rgb(36, 35, 35);
         width: 460px;
+        height: 800px !important;
     }
     .welcome_page .logo{
         margin-left: 25px;
