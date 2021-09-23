@@ -146,17 +146,16 @@
 } */
 
 @media only screen and (max-width: 600px) {
+	.login_page {
+		padding: 5px;
+	}
+	
 	
 	.login_page .container {
         display: block;
 		width: 320px;
 		padding: 10px;	
-		margin: 10px;
     }
-	.login_page form {
-		/* background-color: #801818;	 */
-		
-	}
     .login_page .form-container{
         width: 300px;
 		height: 450px;
