@@ -65,7 +65,6 @@
         background: none;
         background-color: rgb(36, 35, 35);
         width: 460px;
-        height: 800px !important;
     }
     .welcome_page .logo{
         margin-left: 25px;
@@ -102,7 +101,7 @@
         background-color: rgb(28, 215, 221);
         margin-left: 40px;
         margin-top: 70px;
-        margin-bottom: 100px;
+        margin-bottom: 400px;
     }
     .welcome_page .admint_button_div{
         position: absolute;
