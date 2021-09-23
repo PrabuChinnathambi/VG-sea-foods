@@ -178,7 +178,6 @@ function Login() {
                                 <input type="number" placeholder="Phone Number" name="phoneNumber" min="1" max="10" value={signUp.phoneNumber} onChange={handleSignUpChange} />
                                 <input type="password" placeholder="Password" name="password" value={signUp.password} onChange={handleSignUpChange} />
                                 <input type="text" placeholder="Confirm Password" name="confirmPassword" value={signUp.confirmPassword} onChange={handleSignUpChange} />
-
                                 <button onClick={handleSignUp}>Register</button>
                             </form>
                         </div>

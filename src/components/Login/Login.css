@@ -24,7 +24,6 @@
 }
 
 .login_page .form-container{	
-	
 	width: 400px;
 	height: 500px;
 }
@@ -147,27 +146,32 @@
 } */
 
 @media only screen and (max-width: 600px) {
-    
-    .login_page .container{
+	
+	.login_page .container {
         display: block;
-        width: 375px;
-		padding: 0px;	
+		width: 320px;
+		padding: 10px;	
+		margin: 10px;
     }
+	.login_page form {
+		/* background-color: #801818;	 */
+		
+	}
     .login_page .form-container{
-        width: 375px;
-		height: 490px;
+        width: 300px;
+		height: 450px;
 		
     }
     .login_page .overlay{
-		width: 375px;
-		height: 450px;	
+		width: 300px;
+		height: 400px;	
     }
 	.login_page .overlay-panel{
 		padding-top: 100px;
 	}
     .login_page .form-container input{
         width: 280px;
-        height: 50px;
+        height: 40px;
     }
 }
 
