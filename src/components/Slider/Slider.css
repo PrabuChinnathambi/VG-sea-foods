@@ -44,16 +44,19 @@
 
 
 
-@media only screen and (max-width: 600px) {
-    .slider_page .slider_container .carousel{
-        width: 600px;
-    }
-    .slider_page .slider_container .carousel img{
+@media only screen and (max-width: 767px) {
+    /* .slider_page .slider_container .carousel{
+        
+    } */
+    /* .slider_page .slider_container .carousel img{
         width: 100%;
         height: 350px;
-    }
+    } */
     
     .slider_page .slider_container .carousel .slides .slide1_detail, .slide2_detail{
         display: none;
     }
 }
+
+
+
