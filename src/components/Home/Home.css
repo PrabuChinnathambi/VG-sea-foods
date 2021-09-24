@@ -222,9 +222,8 @@
     
     }
     .home_products .home_productCard{
-        width: 320px;
-        margin: 20px;
-        margin-left: 10px;
+        width: 100%;
+        margin: 20px 10px 20px 10px;
     }
     .home_products .home_productCard img{
         height: 210px;
