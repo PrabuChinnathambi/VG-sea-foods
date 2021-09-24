@@ -62,13 +62,17 @@
 
 @media only screen and (max-width: 600px){
     .welcome_page  {
-        background: rgb(36, 35, 35) no-repeat center center fixed; 
-        /* background-color: rgb(36, 35, 35);  */
+        background: url(../../images/welcomeMobileImg.jpg)  top right no-repeat; 
+        background-attachment: fixed;
+        background-size: 100%;
+        
+        /* background: rgb(36, 35, 35) no-repeat center center fixed; 
+        background-color: rgb(36, 35, 35); 
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-        padding-bottom: 600px;
+        padding-bottom: 600px;  */
     }
     .welcome_page .logo{
         margin-left: 25px;

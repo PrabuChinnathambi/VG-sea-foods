@@ -7,7 +7,7 @@ function OpenPage() {
     const [navcolor, setNavcolor] = useState(false);
 
     window.onscroll = () => {
-        if (document.body.scrollTop >= 300 || document.documentElement.scrollTop >= 300) {
+        if (document.body.scrollTop >= 100 || document.documentElement.scrollTop >= 100) {
             // console.log("scrolled")
             setNavcolor(true);
         } else {

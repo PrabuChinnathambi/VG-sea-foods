@@ -73,8 +73,8 @@ function Login() {
                     history.push('/home');
                     // history.go(0)
                 }).catch(err => {
-                    const Error = () => toast(err);
-                    Error();
+                    console.log(err)
+                    toast.error(err.response.data.message);
 
                 })
         }
@@ -89,20 +89,16 @@ function Login() {
 
 
         if (signUp.email === "" || signUp.phoneNumber === "" || signUp.password === "" || signUp.confirmPassword === "") {
-            const requireError = () => toast("All Feilds are Required");
-            requireError();
+            toast("All Feilds are Required")
         }
         else if (!result) {
-            const emailError = () => toast("Email id is Incorrect");
-            emailError();
+            toast("Email Id is Incorrect");
         }
         else if (signUp.phoneNumber.length !== 10) {
-            const phoneError = () => toast("Phone number should have 10 digit");
-            phoneError();
+            toast("Phone number should have 10 digit");
         }
         else if (signUp.password !== signUp.confirmPassword) {
-            const pwdError = () => toast("Password and Confirm Password should be same.");
-            pwdError();
+            toast("Password should be same");
         } else {
             const payload = {
                 email: signUp.email,
@@ -113,22 +109,20 @@ function Login() {
 
             await Axios.post('https://vgseafoods.herokuapp.com/registerUser', payload)
                 .then(data => {
-                console.log(data);
-                const signUpSuccess = () => toast("You have registerd successfully!");
-                signUpSuccess();
-                setSignUp({
-                    email: "",
-                    phoneNumber: "",
-                    password: "",
-                    confirmPassword: ""
+                    console.log(data);
+                    toast("User Registerd Successfully!");
+
+                    setSignUp({
+                        email: "",
+                        phoneNumber: "",
+                        password: "",
+                        confirmPassword: ""
+                    })
+                    setToggle(!toggle);
+
                 })
-                setToggle(!toggle);
-
-            })
                 .catch(err => {
-
-                    const Error = () => toast(err);
-                    Error();
+                    toast.error(err.response.data.message);
                 })
 
         }

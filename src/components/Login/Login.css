@@ -99,7 +99,8 @@
 .login_page .form-container input {
 	background-color: #eee;
 	border: none;
-	padding: 20px 15px;
+	border-radius: 5px;
+	padding: 20px 20px;
 	margin: 5px 0;
     height: 60px;
 	width: 300px;

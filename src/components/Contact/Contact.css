@@ -90,10 +90,28 @@
 
 .contact_page .feedback_map{
     display: flex;
-    align-items: center ;
-   
+    align-items: center ;  
 }
 .contact_page .feedback_map iframe{
     width: 560px;
     height: 570px;
+}
+
+
+@media only screen and (max-width: 600px){
+    .contact_page .contactImg img{
+        width: 600px;   
+        height: 350px;
+    }
+    .contact_page .contact_greeting{
+       display: none;
+    }
+    .contact_page .contact_content .contact_one{
+        display: block;
+        margin-left: 0px;  
+    }
+    .contact_page .feedback_map{
+        display: block;
+    }
+
 }
