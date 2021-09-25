@@ -79,7 +79,7 @@
         position: unset;
         top:0px;
         right: 0px;
-        line-height: 28px;
+        line-height: 23px;
         border: 1px solid white;
         padding: 0px 0px;
         margin: 20px 20px 20px 20px;
@@ -92,8 +92,9 @@
     }
     .about_container .about_greeting p{
         text-align: justify;
-        font-weight: 600;
+        font-weight:400px;
         color: rgb(109, 108, 108);
+        font-size: 16px;
     }
 
     .about_container .about_content{
@@ -102,13 +103,11 @@
         padding-left: 0px;
         margin: 0px;
         text-align: center;
-        
     }
     .about_container .about_content .content_one img{
-        width: 330px;
+        width: 320px;
         margin-right: 0px;
-
-        margin: 10px 20px 40px 20px;
+        margin: 10px 30px 40px 30px;
         filter: drop-shadow(0 0 0.55rem black);
     }
     .about_container .about_content .content_one{
@@ -121,7 +120,7 @@
     }
     .about_container .about_content .content_one .detail{
         width: 100%;
-        line-height: 28px;
+        line-height: 25px;
         margin-right: 0px;
         margin-bottom: 0px;
         padding: 10px 30px 10px 30px;
@@ -132,8 +131,9 @@
         font-weight: 700;
     }
     .about_container .about_content .content_one .detail p{
-        font-weight: 600;
+        font-weight:400px;
         color: rgb(109, 108, 108);
+        font-size: 16px;
         margin-top: 20px;
         margin-left: 0px;
     }
