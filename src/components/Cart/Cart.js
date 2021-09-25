@@ -226,10 +226,10 @@ function Cart() {
                                                             <option value="5">5</option>
                                                         </select>
                                                     </div>
-                                                    <div>
-                                                        <Button onClick={() => deleteCartProduct(item)} variant="contained" color="secondary">
+                                                    <div >
+                                                        <Button onClick={() => deleteCartProduct(item)} variant="contained" color="secondary" className="delete_button">
                                                             {
-                                                                deleteLoader === item.product_id ? <span><PulseLoader color="white" size={10} ></PulseLoader></span> : <span>Delete</span>
+                                                                deleteLoader === item.product_id ? <span><PulseLoader color="white" size={8} ></PulseLoader></span> : <span>Delete</span>
                                                             }
                                                         </Button>
                                                     </div>
