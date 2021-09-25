@@ -54,10 +54,21 @@
     
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 767px) {
+    .nav_page nav{
+        /* border: 1px solid black; */
+        padding: 10px;
+        margin: 0px;
+        width: 100%;
+    }
     .nav_page nav .container-fluid{
-       margin-left: 10px;
-       
+        margin: 0px 10px 0px 10px;
+        align-items: center;
+       /* border: 1px solid black; */
+       width: 100%;
+    }
+    .nav_page .container-fluid .name{
+        margin-left: -10px;
     }
     .nav_page .navbar-nav ul{
         display: block;

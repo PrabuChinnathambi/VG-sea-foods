@@ -7,7 +7,7 @@ function OpenPage() {
     const [navcolor, setNavcolor] = useState(false);
 
     window.onscroll = () => {
-        if (document.body.scrollTop >= 100 || document.documentElement.scrollTop >= 100) {
+        if (document.body.scrollTop >= 50 || document.documentElement.scrollTop >= 50) {
             // console.log("scrolled")
             setNavcolor(true);
         } else {
@@ -22,9 +22,11 @@ function OpenPage() {
                     <div className="container-fluid">
                         <img src={Logo} alt="" />
                         <p className="name">Sea Foods</p>
-                        <button className="navbar-toggler bg-dark" type="button" data-toggle="collapse" data-target="#navbarNav">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
+                        <div className="toggler_button">
+                            <button className="navbar-toggler bg-dark" type="button" data-toggle="collapse" data-target="#navbarNav">
+                                <span className="navbar-toggler-icon"></span>
+                            </button>
+                        </div>
                         <div className="collapse navbar-collapse" id="navbarNav">
                             <ul className="navbar-nav">
                                 <ul>
