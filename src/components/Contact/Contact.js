@@ -29,10 +29,10 @@ function Contact() {
                 <div className="contact_content">
                     <div className="contact_one">
                         <img className="contact" src={contactIcon} alt="icon" />
-                        <div>
-                            <p>3/1585.3, kamarajar nagar,</p>
-                            <p>Pamban - 623521</p>
-                            <p>Rameshwaram</p>
+                        <div className="address_details">
+                            <p>Address : 3/1585.3, kamarajar nagar,</p>
+                            <p>Pamban - 623521,</p>
+                            <p>Rameshwaram.</p>
                             <p>Phone : +91 77080 90287</p>
                             <p>Email : vijiliuse@gmail.com </p>
                             <div className="social_links">
