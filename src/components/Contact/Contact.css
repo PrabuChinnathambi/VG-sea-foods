@@ -141,13 +141,15 @@
         
     }
     .contact_page .contact_content .contact_one .address_details{
-        margin: 10px 20px 10px 20px;
+        margin: 10px 17px 10px 17px;
+        padding-left: 12px;
+        
     }
     .contact_page .contact_content .contact_one p{
         font-size: 18px;
         font-weight: 700;
         color:rgb(75, 74, 74);
-        margin: 30px;
+        margin: 20px;
         margin-left: 0px;
         line-height: 16px;
     }
@@ -160,9 +162,10 @@
     }
     .contact_page .contact_content .contact_one .social_links{
         display: flex;
+        padding-left: 12px;
         margin-left: 0px;
         margin-top: 0px;
-        margin: 10px 60px 10px 60px;
+        margin: 40px 50px 10px 50px;
 
     }
     .contact_page .contact_content .contact_one .social_links img{
@@ -181,7 +184,7 @@
     }
     .contact_page .feedback_map iframe{
         box-shadow: 0 5px 5px 0 rgba(0,0,0,0.05);
-        margin: 20px 10px 20px 10px;
+        margin: 20px 15px 20px 15px;
         width: 350px;
         height: 350px;
     }
