@@ -19,7 +19,6 @@ body::after {
     z-index: 2;    
   }
 .welcome_page{
-    width: 60vh !important;
     height: 100vh !important ;
     background: rgb(0, 0, 0); /* Fallback color */
     background: rgba(0, 0, 0, 0.5);   
@@ -100,7 +99,9 @@ body::after {
         content: '';
         z-index: 2;    
       }
-      
+    .welcome_page{
+        width: 60vh !important;  
+    }
     .welcome_page .logo{
         margin-left: 25px;
     }
