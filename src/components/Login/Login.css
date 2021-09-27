@@ -141,7 +141,8 @@
 	.login_page .container {
         display: block;
 		width: 320px;
-		padding: 10px;	
+		padding: 10px;
+		margin-top: 15px;	
     }
     .login_page .form-container{
         width: 300px;
@@ -150,10 +151,10 @@
     }
     .login_page .overlay{
 		width: 300px;
-		height: 330px;	
+		height: 230px;	
     }
 	.login_page .overlay-panel{
-		padding-top: 70px;
+		padding-top: 40px;
 	}
 	.login_page .form-container h1{
 		font-size: 20px;

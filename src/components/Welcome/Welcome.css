@@ -73,7 +73,9 @@
         background-repeat: no-repeat;
         background-size: cover; 
     }
-    
+    .welcome_page .welcome_container{
+        background: rgba(0, 0, 0, 0.5);
+    }
     .welcome_page .logo{
         margin-left: 25px;
     }
