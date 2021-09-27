@@ -24,7 +24,11 @@
 
 
 .cart_page .cart_container .cart_details{
-    
+    border:  1px solid black;
+    margin: 40px 10px 10px 10px;
+    width: 100% !important;
+    height: 600px;
+    overflow: scroll;
 }
 
 

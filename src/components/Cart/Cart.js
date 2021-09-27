@@ -148,7 +148,7 @@ function Cart() {
             addressDetails: addresDetails,
             orderDetails: cartData,
             totalAmount: total,
-            time : timestamp
+            time: timestamp
         }
 
         const userpayload = {
@@ -209,35 +209,42 @@ function Cart() {
 
                             <div className="cart_details">
                                 {
-                                    cartData.map(item => {
-                                        return (
-                                            <div key={item.product_id} className="cart_card">
-                                                <img src={item.image} alt="image" />
-                                                <div className="cost_details">
-                                                    <h2>{item.productName}</h2>
-                                                    <h3>Cost: {item.cost}/kg</h3>
-                                                    <div className="drop_down" key={item._id}>
-                                                        <select onChange={(val) => handleQuantity(val)} id={item.product_id} >
-                                                            <option>Qty : {item.quantity}</option>
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                        </select>
-                                                    </div>
-                                                    <div >
-                                                        <Button onClick={() => deleteCartProduct(item)} variant="contained" color="secondary" className="delete_button">
-                                                            {
-                                                                deleteLoader === item.product_id ? <span><PulseLoader color="white" size={8} ></PulseLoader></span> : <span>Delete</span>
-                                                            }
-                                                        </Button>
+                                    cartData ? (
+                                        cartData.map(item => {
+                                            return (
+                                                <div key={item.product_id} className="cart_card">
+                                                    <img src={item.image} alt="image" />
+                                                    <div className="cost_details">
+                                                        <h2>{item.productName}</h2>
+                                                        <h3>Cost: {item.cost}/kg</h3>
+                                                        <div className="drop_down" key={item._id}>
+                                                            <select onChange={(val) => handleQuantity(val)} id={item.product_id} >
+                                                                <option>Qty : {item.quantity}</option>
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
+                                                            </select>
+                                                        </div>
+                                                        <div >
+                                                            <Button onClick={() => deleteCartProduct(item)} variant="contained" color="secondary" className="delete_button">
+                                                                {
+                                                                    deleteLoader === item.product_id ? <span><PulseLoader color="white" size={8} ></PulseLoader></span> : <span>Delete</span>
+                                                                }
+                                                            </Button>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        )
+                                            )
 
-                                    })
+                                        })
+
+                                    ) : (
+                                        <div>
+                                            <h2>No data's</h2>
+                                        </div>
+                                    )
                                 }
                             </div>
                             <div className="cart_payment">
