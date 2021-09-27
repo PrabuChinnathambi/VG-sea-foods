@@ -74,6 +74,8 @@
         background-size: cover; 
     }
     .welcome_page .welcome_container{
+        width: 100%;
+        height: 100vh;
         background: rgba(0, 0, 0, 0.5);
     }
     .welcome_page .logo{
