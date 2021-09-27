@@ -116,16 +116,18 @@ body::after {
     }
     .welcome_page .greeting_msg{
         margin-left: 30px;
-        margin-top: 40px;
+        margin-top: 60px;
     }
     .welcome_page .greeting_msg .greeting_head{
-        font-size: 25px;
+        font-size: 30px;
     }
     .welcome_page .greeting_msg .greeting_body{
-        width: 350px;
+        margin-top: 30px;
+        font-size: 18px;
+        width: 360px;
     }
     .welcome_page .typewriter{
-        margin-top: 50px;
+        margin-top: 60px;
         margin-left: 30px;
     }
     
@@ -136,7 +138,7 @@ body::after {
     .welcome_page .button_group{
         background-color: rgb(28, 215, 221);
         margin-left: 40px;
-        margin-top: 70px;
+        margin-top: 80px;
         margin-bottom: 50px;
     }
     .welcome_page .admint_button_div{
