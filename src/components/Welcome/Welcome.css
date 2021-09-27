@@ -74,7 +74,8 @@ body:after {
         color: white;
         background: url(../../images/welcomeMobileImg2.jpg); 
         width: 100%;
-        min-height: 700px;
+        /* height: 100vh !important; */
+        min-height: 100vh !important;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
