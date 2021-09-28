@@ -205,6 +205,15 @@ function Cart() {
                         <div className="cartImg">
                             <img src={cartImg} alt="" />
                         </div>
+                        <div className="cart_greeting">
+                            <h1>Cart Details</h1>
+                            <p>What are the products did have added into the cart. It will shown below with cost details. If you want increase the quantity of any product you can do it easily.</p>
+                            <div className="scroll">
+                                <p>scroll down</p>
+                                <img src="https://img.icons8.com/ios-glyphs/2x/4a90e2/double-down.png" alt="scroll" />
+                            </div>
+
+                        </div>
                         <div className="cart_container">
 
                             <div className="cart_details">

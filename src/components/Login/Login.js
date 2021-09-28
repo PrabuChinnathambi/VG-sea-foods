@@ -64,7 +64,6 @@ function Login() {
                     dispatch(setUser(res.data.userData));
                     localStorage.setItem("token", res.data.token);
                     console.log(localStorage.getItem("token"));
-
                     setSignIn({
                         email: "",
                         password: ""

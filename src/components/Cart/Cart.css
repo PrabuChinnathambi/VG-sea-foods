@@ -10,9 +10,7 @@
   z-index: 9999;
 }
 .cart_page .cartImg img{
-  margin-top: -300px;
   width: 100%;
-  
 }
 .cart_page .cart_nav{
   top:o;
@@ -23,12 +21,32 @@
 }
 
 
-.cart_page .cart_container .cart_details{
-    border:  1px solid black;
-    margin: 40px 10px 10px 10px;
-    width: 100% !important;
-    height: 600px;
-    overflow: scroll;
+.cart_page .cart_greeting{
+  padding: 40px 20px 40px 20px;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  text-align: center;
+  width: 330px;
+  position: absolute;
+  top:150px;
+  right:140px;
+  line-height: 40px;
+  border-left: 15px solid #3EC8AC;
+  border-right: 15px solid #4E90A4;
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-position: 0 0, 0 100%;
+  background-repeat: no-repeat;
+  -webkit-background-size: 100% 20px;
+  -moz-background-size: 100% 20px;
+  background-size: 100% 20px;
+  background-image: -webkit-linear-gradient(left, #3EC8AC 0%, #4E90A4 100%), -webkit-linear-gradient(left, #3EC8AC 0%, #4E90A4 100%);
+  background-image: -moz-linear-gradient(left, #3EC8AC 0%, #4E90A4 100%), -moz-linear-gradient(left, #3EC8AC 0%, #4E90A4 100%);
+  background-image: -o-linear-gradient(left, #3EC8AC 0%, #4E90A4 100%), -o-linear-gradient(left, #3EC8AC 0%, #4E90A4 100%);
+  background-image: linear-gradient(to right, #3EC8AC 0%, #4E90A4 100%), linear-gradient(to right, #3EC8AC 0%, #4E90A4 100%);
+    
 }
 
 
@@ -217,17 +235,20 @@
 
   @media only screen and (max-width: 767px){
     .cart_page .cartImg img{
-      margin-top: 0px;
       width: 100%;
+      height: 320px;
     }
     .cart_page .cart_container{
       display: block;
     }
-    
+    .cart_page .cart_greeting{
+      display: none;
+    }
     .cart_page .cart_container .cart_details{
-      margin: 0px;
+      margin: 15px;
     }
     .cart_page .cart_container .cart_details .cart_card{
+      
       width: 100%;   
       height: 100%; 
       background-color: whitesmoke;
@@ -275,6 +296,7 @@
  
     .cart_page .cart_container .cart_payment .payment_container{
       width: 100%;
+      
     }
     .cart_page .cart_container .cart_payment .payment_container .payment_card{
       display: flex;

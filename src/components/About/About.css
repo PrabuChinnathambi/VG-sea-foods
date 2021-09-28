@@ -6,13 +6,13 @@
 }
 .about_page .about_container .aboutImg img{
     width: 100%;   
-    opacity: 1;  
+    opacity: 1; 
 }
 .about_container{
     position: relative;
 }
 .about_container .about_greeting{
-    opacity: 2;
+    /* opacity: 2;
     color: white;
     text-align: center;
     width: 800px;
@@ -22,7 +22,31 @@
     line-height: 40px;
     border: 1px solid white;
     padding: 20px 30px;
-    backdrop-filter: blur(3.5px);
+    background: rgba(0, 0, 0, 0.3); */
+    padding: 40px 20px 40px 20px;
+    color: white;
+    background: rgba(0, 0, 0, 0.4);
+    text-align: center;
+    width: 330px;
+    position: absolute;
+    top:150px;
+    right: 150px;
+    line-height: 40px;
+    border-left: 15px solid #3EC8AC;
+    border-right: 15px solid #4E90A4;
+    border-radius: 5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-position: 0 0, 0 100%;
+    background-repeat: no-repeat;
+    -webkit-background-size: 100% 20px;
+    -moz-background-size: 100% 20px;
+    background-size: 100% 20px;
+    background-image: -webkit-linear-gradient(left, #3EC8AC 0%, #4E90A4 100%), -webkit-linear-gradient(left, #3EC8AC 0%, #4E90A4 100%);
+    background-image: -moz-linear-gradient(left, #3EC8AC 0%, #4E90A4 100%), -moz-linear-gradient(left, #3EC8AC 0%, #4E90A4 100%);
+    background-image: -o-linear-gradient(left, #3EC8AC 0%, #4E90A4 100%), -o-linear-gradient(left, #3EC8AC 0%, #4E90A4 100%);
+    background-image: linear-gradient(to right, #3EC8AC 0%, #4E90A4 100%), linear-gradient(to right, #3EC8AC 0%, #4E90A4 100%);
 }
 .about_container .about_greeting h1{
     font-weight: 800;
@@ -84,6 +108,9 @@
         padding: 0px 0px;
         margin: 20px 20px 20px 20px;
         backdrop-filter:unset;
+        background-image: none;
+        background:none;
+
        
         /* border: 1px solid black; */
     }
@@ -95,6 +122,9 @@
         font-weight:400px;
         color: rgb(109, 108, 108);
         font-size: 16px;
+    }
+    .about_container .about_greeting .scroll{
+        display: none;
     }
 
     .about_container .about_content{
