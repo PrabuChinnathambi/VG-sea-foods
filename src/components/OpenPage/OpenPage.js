@@ -34,7 +34,7 @@ function OpenPage() {
                                     <li><Link to="/about" className="links">About</Link></li>
                                     <li><Link to="/contact" className="links">Contact</Link></li>
                                     <li><Link to="/cart" className="links">Cart</Link></li>
-                                    <li><Link to="/logout" className="links">Logout</Link></li>
+                                    <li><Link to="/" className="links">Logout</Link></li>
                                 </ul>
                             </ul>
                         </div>
