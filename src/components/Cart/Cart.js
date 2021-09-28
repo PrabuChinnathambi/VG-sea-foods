@@ -10,11 +10,11 @@ import OpenPage from '../OpenPage/OpenPage';
 import cartImg from '../../images/cartImg.jpg';
 import Footer from '../Footer/Footer';
 
-
+import { ToastContainer, toast } from 'react-toastify';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-
+import {useHistory} from 'react-router-dom'
 
 const style = {
     position: 'absolute',
@@ -33,6 +33,7 @@ const style = {
 
 function Cart() {
 
+    const history = useHistory();
     const [usertDatas, setUsertDatas] = useState([]);
     const [cartData, setCartData] = useState([]);
     const [cartSumToggle, setCartSumToggle] = useState(true);
@@ -49,7 +50,10 @@ function Cart() {
 
     const [opensuccess, setOpensuccess] = React.useState(false);
     const handleOpenSuccess = () => setOpensuccess(true);
-    const handleCloseSuccess = () => setOpensuccess(false);
+    const handleCloseSuccess = () => {
+        
+        setOpensuccess(false);
+    }
 
 
     const userNew = JSON.parse(localStorage.getItem("userData"));
@@ -62,7 +66,13 @@ function Cart() {
     }, [])
 
     const handleClickOpen = () => {
-        setOpen(true);
+
+        if (cartData.length !== 0) {
+            setOpen(true);
+        } else {
+            toast("No Items in a Cart")
+        }
+
     };
 
     const handleClose = () => {
@@ -137,7 +147,8 @@ function Cart() {
     }
 
     const handleDone = () => {
-        window.location.reload();
+        history.push('/home');
+        // window.location.reload();
     }
 
     const handlesuccess = () => {
@@ -166,6 +177,7 @@ function Cart() {
                         console.log(err.message)
                     })
                 handleOpenSuccess();
+                
 
             }).catch(err => {
                 console.log(err.message);
@@ -202,6 +214,7 @@ function Cart() {
                         <div className="cart_nav">
                             <OpenPage />
                         </div>
+                        <ToastContainer />
                         <div className="cartImg">
                             <img src={cartImg} alt="" />
                         </div>
@@ -218,7 +231,7 @@ function Cart() {
 
                             <div className="cart_details">
                                 {
-                                    cartData ? (
+                                    cartData.length !== 0 ? (
                                         cartData.map(item => {
                                             return (
                                                 <div key={item.product_id} className="cart_card">
@@ -250,8 +263,8 @@ function Cart() {
                                         })
 
                                     ) : (
-                                        <div>
-                                            <h2>No data's</h2>
+                                        <div style={{ margin: "30px" }}>
+                                            <h2>It's Empty .!!! </h2>
                                         </div>
                                     )
                                 }
