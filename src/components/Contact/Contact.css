@@ -210,10 +210,11 @@
     .contact_page .feedback_map{
         display: block;
         align-items: center ;  
+        margin: 20px 15px 20px 15px;
     }
     .contact_page .feedback_map iframe{
         box-shadow: 0 5px 5px 0 rgba(0,0,0,0.05);
-        margin: 20px 15px 20px 15px;
+        
         width: 350px;
         height: 350px;
     }

@@ -1,11 +1,16 @@
 
 .home_page .loader{
-  position: fixed;
+  /* position: fixed;
   left: 50%;
   top: 50%;
   width: 100%;
   height: 100%;
-  z-index: 9999;
+  z-index: 9999; */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   
 }
 
@@ -44,7 +49,7 @@
 .icon_float .count p{
     position: absolute;
     top: -6px;
-    right: 7px;
+    right: 8px;
     font-weight: 600;
     font-size: 23px;
     

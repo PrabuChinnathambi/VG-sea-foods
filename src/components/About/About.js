@@ -57,7 +57,7 @@ function About() {
                     </div>
                 </div>
 
-                <Link to="/admin">Admin</Link>
+                {/* <Link to="/admin">Admin</Link> */}
             </div>
             <div>
                 <Footer />

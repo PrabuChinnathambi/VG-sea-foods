@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import './AdminItems.css';
 import Axios from 'axios';
-import OpenPage from '../../OpenPage/OpenPage';
+
 import { Link } from 'react-router-dom';
+import NavPage from '../NavPage/NavPage';
 
 
 
@@ -139,11 +140,11 @@ function AdminItems() {
 
     return (
         <div className="adminItems_page">
-            <div className="nav">
-                <OpenPage />
+            <div className="navPage">
+                <NavPage/>
             </div>
             <div className="adminItems_container">
-                <Link to="orderdetails">OrderDetails</Link>
+                {/* <Link to="orderdetails">OrderDetails</Link> */}
                 <div className="add_product">
                     <div className="row">
                         <div className="col-md-12">

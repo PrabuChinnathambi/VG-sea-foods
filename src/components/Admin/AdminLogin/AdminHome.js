@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import './AdminHome.css';
 import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
-import OpenPage from '../../OpenPage/OpenPage';
 
 
 function AdminHome() {
@@ -24,16 +23,13 @@ function AdminHome() {
             .then((result) => {
                 let cnfm = result.data.message;
                 if(cnfm === "Success"){
-                    history.push('/adminItems');
+                    history.push('/adminDashboard');
                 }
             })
     }
 
     return (
         <div className="admin_login">
-            <div className="nav">
-                <OpenPage />
-            </div>
             <div>
                 <div className="login-wrap">
                     <div className="login-html">

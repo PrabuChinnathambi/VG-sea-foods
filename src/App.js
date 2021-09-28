@@ -26,7 +26,7 @@ function App() {
           <Route path="/contact" component={Contact} ></Route>
           <Route path="/cart" component={Cart} ></Route>
           <Route path="/adminLogin" component={AdminHome} ></Route>
-          <Route path="/adminItems" component={AdminItems} ></Route>
+          <Route path="/adminDashboard" component={AdminItems} ></Route>
           <Route path="/orderdetails" component={OrderDetails} ></Route>
         </Switch>
       </Router>
