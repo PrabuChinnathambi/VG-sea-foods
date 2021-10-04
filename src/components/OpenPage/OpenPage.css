@@ -24,9 +24,6 @@
     width: 70px;
     margin-right: 10px;
 }
-.nav_page nav .container-fluid .navbar-collapse{
-    margin-left: 400px;
-}
 
 .nav_page .navbar-nav ul{
     display: flex;

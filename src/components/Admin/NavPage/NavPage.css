@@ -57,28 +57,27 @@
 }
 
 @media only screen and (max-width: 767px) {
-    .admin_navpage  .nav_page nav{
+    .admin_navpage .nav_page nav{
         /* border: 1px solid black; */
         padding: 10px;
         margin: 0px;
         width: 100%;
     }
-    .admin_navpage  .nav_page nav .container-fluid{
+    .admin_navpage .nav_page nav .container-fluid{
         margin: 0px 10px 0px 10px;
         align-items: center;
        /* border: 1px solid black; */
        width: 100%;
     }
-    .admin_navpage  .nav_page .container-fluid .name{
-        margin-left: 40px;
-        margin-right: 60px;
+    .admin_navpage .nav_page .container-fluid .name{
+        margin-left: -10px;
     }
-    .admin_navpage  .nav_page .navbar-nav ul{
+    .admin_navpage .nav_page .navbar-nav ul{
         display: block;
         list-style: none;
     }
-    v.nav_page nav .container-fluid .navbar-collapse{
-        margin-left: -40px;
+    .admin_navpage .nav_page nav .container-fluid .navbar-collapse{
+        margin-left: -60px;
     }
     .admin_navpage .nav_page .navbar-nav ul{
         margin-bottom: 30px;

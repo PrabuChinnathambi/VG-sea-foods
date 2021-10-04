@@ -63,12 +63,14 @@
 
 .cart_page .cart_container .cart_details{
   margin: 60px 20px 30px 20px;
-  min-width: 600px;
+  min-width: 700px;
   min-height: 500px;
   background-color: whitesmoke;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
-
+.cart_page .cart_container .cart_details .empty{
+  padding: 40px;
+}
 .cart_page .cart_container .cart_details .cart_card{
     width: 700px;
     background-color: whitesmoke;
@@ -270,7 +272,12 @@
       background-color: whitesmoke;
       box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     }
-  
+    .cart_page .cart_container .cart_details .empty{
+        padding: 40px;
+    }
+    .cart_page .cart_container .cart_details .empty img{
+      width: 50px;
+    }
     .cart_page .cart_container .cart_details .cart_card{
       
       width: 100%;   

@@ -14,7 +14,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 const style = {
     position: 'absolute',
@@ -51,7 +51,7 @@ function Cart() {
     const [opensuccess, setOpensuccess] = React.useState(false);
     const handleOpenSuccess = () => setOpensuccess(true);
     const handleCloseSuccess = () => {
-        
+
         setOpensuccess(false);
     }
 
@@ -134,6 +134,7 @@ function Cart() {
         Axios.post("https://vgseafoods.herokuapp.com/deleteCartProduct", payload)
             .then((result) => {
                 console.log(result);
+                toast("Product removed from cart")
                 setDeleteLoader([]);
                 getCartData();
             }).catch(err => {
@@ -177,7 +178,7 @@ function Cart() {
                         console.log(err.message)
                     })
                 handleOpenSuccess();
-                
+
 
             }).catch(err => {
                 console.log(err.message);
@@ -252,7 +253,7 @@ function Cart() {
                                                         <div >
                                                             <Button onClick={() => deleteCartProduct(item)} variant="contained" color="secondary" className="delete_button">
                                                                 {
-                                                                    deleteLoader === item.product_id ? <span><PulseLoader color="white" size={8} ></PulseLoader></span> : <span>Delete</span>
+                                                                    deleteLoader === item.product_id ? <span><PulseLoader color="white" size={8} ></PulseLoader></span> : <span>Remove</span>
                                                                 }
                                                             </Button>
                                                         </div>
@@ -263,8 +264,8 @@ function Cart() {
                                         })
 
                                     ) : (
-                                        <div style={{ margin: "30px" }}>
-                                            <h2>It's Empty .!!! </h2>
+                                        <div className="empty">
+                                            <h2><img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/285/worried-face_1f61f.png" /> It's Empty .!!! </h2>
                                         </div>
                                     )
                                 }

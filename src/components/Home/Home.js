@@ -106,7 +106,7 @@ function Home() {
 
         cartDatacheck.map(item => {
             if (item.product_id === res._id) {
-               return productcheck = true;
+                return productcheck = true;
             }
         });
 
@@ -147,7 +147,7 @@ function Home() {
     }
 
 
-    console.log(loader);
+    console.log(cartCount);
 
 
     return (
@@ -178,8 +178,12 @@ function Home() {
                                 <div className="slider">
                                     <SliderVal />
                                 </div>
-                                <div>
-                                    <Flip bottom delay={2000}>
+                                <div className="scroll-left">
+                                    <p>Currently We can deliver our products inside Pamban only...!!! Please ensure that when you order the products.</p>
+                                </div>
+
+                                <div className="delivery">
+                                    <Flip bottom delay={1000}>
                                         <div className="deliver_card">
                                             <div>
                                                 <i><img src={fastDelivery} alt="icon" /></i>

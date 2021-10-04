@@ -3,22 +3,29 @@ import { Carousel } from 'react-responsive-carousel';
 import slide1 from '../../images/sliderImg/slider1.jpg';
 import slide2 from '../../images/sliderImg/slider2.jpg';
 import slide3 from '../../images/sliderImg/slider3.jpg';
+import { Typewriter } from 'react-simple-typewriter';
 import './Slider.css';
 
 function Slider() {
+
+
+    const handleType = (count) => {
+        // access word count number
+        // console.log(count)
+    }
+
+    const handleDone = () => {
+        // console.log(`Done after 5 loops!`)
+    }
+
+
     return (
         <div className="slider_page">
             <div className="slider_container">
                 <Carousel className="carousel" autoPlay={true} showThumbs={false} interval={5000} infiniteLoop={true}>
                     <div className="slides">
                         <img src={slide1} alt="" />
-                        {/* <Fade>
-                            <div className="slide1_detail">
-                                <h1>VG</h1>
-                                <p>Sea Foods Festival</p>
-                                <p>We are in online Now 😃. We provides fresh seafood delivery right to your front door</p>
-                            </div>
-                        </Fade> */}
+                       
                     </div>
                     <div className="slides">
                         <img src={slide2} alt="" />

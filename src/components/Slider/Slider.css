@@ -1,7 +1,10 @@
 
 .slider_page .slider_container .carousel .slides{
     display: flex;
+    position: relative;
 }
+
+
 /* .slider_page .slider_container .carousel .slides .slide1_detail{
     position: absolute;
     padding: 10px;

@@ -28,7 +28,7 @@ function OpenPage() {
                             </button>
                         </div>
                         <div className="collapse navbar-collapse" id="navbarNav">
-                            <ul className="navbar-nav">
+                            <ul className="navbar-nav ml-auto">
                                 <ul>
                                     <li><Link to="/home" className="links">Home</Link></li>
                                     <li><Link to="/about" className="links">About</Link></li>
