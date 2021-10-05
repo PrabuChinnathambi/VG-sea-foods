@@ -188,7 +188,7 @@ function AdminItems() {
                         products.map(post => {
                             return (
                                 <div key={post._id} className="product_card">
-                                    <div className="product_details">
+                                <div className="product_details">
                                         <img src={post.image} alt="" />
                                         <span><h4>{post.productName}</h4></span>
                                         <span><h5>Cost : {post.cost}/1KG</h5></span>
