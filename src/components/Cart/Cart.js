@@ -175,7 +175,7 @@ function Cart() {
         const userorderDT = `You have ordered ${cartData.length} products. Details : ${cartData.map(item => {
             return (
                 ` ${item.productName} ${item.quantity}kg`)
-        })} Total cost : Rs.${total}`
+        })} Total cost : Rs.${total}.  The products will reach you within a minutes. Thanks for your order.`
 
 
         Axios.post("https://vgseafoods.herokuapp.com/bookOrder", payload)
