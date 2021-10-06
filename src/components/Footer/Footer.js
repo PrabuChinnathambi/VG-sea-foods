@@ -42,7 +42,6 @@ function Footer() {
                 <p>© All rights Reserved.</p>
 
             </div>
-            {/* <p>Made with ❤️ by Prabu...</p> */}
         </div>
     )
 }
