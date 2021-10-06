@@ -38,7 +38,7 @@ function Footer() {
                     <a href="https://twitter.com/Vijiliuse1?s=08"><i className="fa fa-twitter"></i></a>
                     <a href="https://www.instagram.com/vijiliuse/" ><i className="fa fa-instagram"></i></a>
                 </div>
-                <p>Webshine2020@ Read All Terms & conditions .</p>
+                <p>VG Sea Foods @ Read All Terms & conditions .</p>
                 <p>© All rights Reserved.</p>
 
             </div>
