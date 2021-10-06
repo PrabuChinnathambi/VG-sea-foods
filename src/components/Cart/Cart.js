@@ -14,7 +14,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
+import emailjs from 'emailjs-com';
 
 const style = {
     position: 'absolute',
@@ -163,10 +164,19 @@ function Cart() {
             time: timestamp
         }
 
+        console.log(payload);
+
         const userpayload = {
             userId: userId
         }
-        console.log(payload)
+
+        const userName = addresDetails.name;
+        const userEmail = userNew.email;
+        const userorderDT = `You have ordered ${cartData.length} products. Details : ${cartData.map(item => {
+            return (
+                ` ${item.productName} ${item.quantity}kg`)
+        })} Total cost : Rs.${total}`
+
 
         Axios.post("https://vgseafoods.herokuapp.com/bookOrder", payload)
             .then(res => {
@@ -177,6 +187,11 @@ function Cart() {
                     }).catch(err => {
                         console.log(err.message)
                     })
+                emailjs.send("service_dr0tbcj", "template_3qfjypb", {
+                    message: userorderDT,
+                    user_email: userEmail,
+                    user_name: userName,
+                }, 'user_BYdBMHlMXkwBuEeeUawlc');
                 handleOpenSuccess();
 
 
