@@ -184,14 +184,14 @@ function Cart() {
                 Axios.post("https://vgseafoods.herokuapp.com/deleteAllCart", userpayload)
                     .then(res => {
                         console.log(res)
+                        emailjs.send("service_dr0tbcj", "template_3qfjypb", {
+                            message: userorderDT,
+                            user_email: userEmail,
+                            user_name: userName,
+                        }, 'user_BYdBMHlMXkwBuEeeUawlc');
                     }).catch(err => {
                         console.log(err.message)
                     })
-                emailjs.send("service_dr0tbcj", "template_3qfjypb", {
-                    message: userorderDT,
-                    user_email: userEmail,
-                    user_name: userName,
-                }, 'user_BYdBMHlMXkwBuEeeUawlc');
                 handleOpenSuccess();
 
 
