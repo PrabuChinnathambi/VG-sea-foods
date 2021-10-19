@@ -154,8 +154,8 @@ function Cart() {
     }
 
     const handlesuccess = () => {
+        setLoading(true);
         const timestamp = Date.now();
-
         const payload = {
             userInfo: userNew,
             addressDetails: addresDetails,
@@ -183,12 +183,14 @@ function Cart() {
                 console.log(res);
                 Axios.post("https://vgseafoods.herokuapp.com/deleteAllCart", userpayload)
                     .then(res => {
+                        setLoading(false)
                         console.log(res)
                         emailjs.send("service_dr0tbcj", "template_3qfjypb", {
                             message: userorderDT,
                             user_email: userEmail,
                             user_name: userName,
                         }, 'user_BYdBMHlMXkwBuEeeUawlc');
+                        
                     }).catch(err => {
                         console.log(err.message)
                     })
@@ -205,6 +207,7 @@ function Cart() {
             address: ""
         })
         handleClose();
+
         // console.log(addresDetails)
         // console.log(cartData);
         // console.log(total);

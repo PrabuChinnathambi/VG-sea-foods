@@ -22,7 +22,7 @@ function NavPage() {
                                     <ul>
                                         <li><Link to="/adminDashboard" className="links">Dashboard</Link></li>
                                         <li><Link to="/orderdetails" className="links">OrderDetails</Link></li>
-                                        <li><Link to="" className="links">Deliverd</Link></li>
+                                        <li><Link to="/deliveredDetails" className="links">Deliverd</Link></li>
                                         <li><Link to="" className="links">Logout</Link></li>
                                     </ul>
                                 </ul>

@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import About from "./components/About/About";
+import Delivered from "./components/Admin/AdminDelivered/Delivered";
 import AdminItems from "./components/Admin/AdminItemPage/AdminItems";
 import AdminHome from "./components/Admin/AdminLogin/AdminHome";
 import OrderDetails from "./components/Admin/AdminOrderdetails/OrderDetails";
@@ -28,6 +29,7 @@ function App() {
           <Route path="/adminLogin" component={AdminHome} ></Route>
           <Route path="/adminDashboard" component={AdminItems} ></Route>
           <Route path="/orderdetails" component={OrderDetails} ></Route>
+          <Route path="/deliveredDetails" component={Delivered} ></Route>
         </Switch>
       </Router>
     </div>
