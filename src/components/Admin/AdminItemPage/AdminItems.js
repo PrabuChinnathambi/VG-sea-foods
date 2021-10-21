@@ -16,7 +16,7 @@ function AdminItems() {
     const [update, setUpdate] = useState(false);
     const [updateId, setUpdateId] = useState("");
     const [products, SetProducts] = useState([])
-
+    const [fileInput, setFileInput] = useState("inputFile");
     let store = localStorage.getItem("token");
 
     Axios.interceptors.request.use(
@@ -62,6 +62,7 @@ function AdminItems() {
     const handleFileRead = async (event) => {
         const file = event.target.files[0]
         const base64 = await convertBase64(file)
+        
         SetImage(base64)
 
     }
@@ -81,12 +82,14 @@ function AdminItems() {
         Axios.post('https://vgseafoods.herokuapp.com/postItemData', payload)
             .then((result) => {
                 getProducts();
+                event.target.value = null;
             })
 
         SetProductName("");
         SetCost("");
         SetQuantity("");
         SetImage("");
+        setFileInput("removeInput");
     }
 
 
@@ -117,19 +120,25 @@ function AdminItems() {
 
     }
 
-    const updatenewProduct = () => {
-
+    const updatenewProduct = (e) => {
+        e.preventDefault();
         const payload = {
             id: updateId,
             productName: productName,
             cost: cost,
             quantity: quantity
         }
+        console.log(payload);
 
         Axios.post("https://vgseafoods.herokuapp.com/updateproduct", payload)
             .then(res => {
-                SetProducts("");
+                console.log(res);
+                setUpdate(false);
                 getProducts();
+                SetProductName("");
+                SetCost("");
+                SetQuantity("");
+                SetImage("");
             })
     }
 
@@ -141,17 +150,17 @@ function AdminItems() {
     return (
         <div className="adminItems_page">
             <div className="navPage">
-                <NavPage/>
+                <NavPage />
+                
             </div>
             <div className="adminItems_container">
                 {/* <Link to="orderdetails">OrderDetails</Link> */}
                 <div className="add_product">
                     <div className="row">
                         <div className="col-md-12">
-                            <form>
+                            <form className="form_data">
                                 <h1>Add Your Product </h1>
                                 <fieldset>
-
                                     <label>Product Name:</label>
                                     <input type="text" id="name" value={productName} onChange={(e) => { SetProductName(e.target.value) }} />
 
@@ -164,7 +173,7 @@ function AdminItems() {
                                     {
                                         update ? "" :
                                             <label className="file">
-                                                <input type="file" id="file" aria-label="File browser example" encType="multipart/form-data"
+                                                <input key={fileInput} type="file" id="file" aria-label="File browser example" encType="multipart/form-data"
                                                     required onChange={handleFileRead} />
                                                 <span className="file-custom"></span>
                                             </label>
@@ -188,7 +197,7 @@ function AdminItems() {
                         products.map(post => {
                             return (
                                 <div key={post._id} className="product_card">
-                                <div className="product_details">
+                                    <div className="product_details">
                                         <img src={post.image} alt="" />
                                         <span><h4>{post.productName}</h4></span>
                                         <span><h5>Cost : {post.cost}/1KG</h5></span>

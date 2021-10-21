@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './AdminHome.css';
 import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 function AdminHome() {
@@ -18,18 +19,34 @@ function AdminHome() {
             username: username,
             password: password
         }
-
-        Axios.post("https://vgseafoods.herokuapp.com/loginAdmin", payload)
-            .then((result) => {
-                let cnfm = result.data.message;
-                if(cnfm === "Success"){
+        if (username === "" || password === "") {
+            toast("All feilds are required");
+        } else {
+            Axios.post("http://localhost:8000/loginAdmin", payload)
+                .then((result) => {
+                    console.log(result)
                     history.push('/adminDashboard');
-                }
-            })
+
+                }).catch((err) => {
+                    toast(err.response.data.message);
+                })
+        }
+
     }
 
     return (
         <div className="admin_login">
+            <ToastContainer
+                position="top-right"
+                autoClose={1500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
             <div>
                 <div className="login-wrap">
                     <div className="login-html">
