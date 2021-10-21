@@ -22,7 +22,7 @@ function AdminHome() {
         if (username === "" || password === "") {
             toast("All feilds are required");
         } else {
-            Axios.post("http://localhost:8000/loginAdmin", payload)
+            Axios.post("https://vgseafoods.herokuapp.com/loginAdmin", payload)
                 .then((result) => {
                     console.log(result)
                     history.push('/adminDashboard');
