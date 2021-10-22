@@ -1,5 +1,5 @@
 .admin_navpage .navclr{
-    background-color: rgb(105, 16, 16);
+    background-color: rgb(31, 31, 95);
 }
 .admin_navpage .nav_page{
     margin: 0 !important;
@@ -17,7 +17,6 @@
     font-size: 20px;
     font-weight: 800;
     color: white;
-
 }
 .admin_navpage  .nav_page nav .container-fluid{
     margin: 0px 30px 0px 40px;

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import './AdminItems.css';
 import Axios from 'axios';
-
+import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import NavPage from '../NavPage/NavPage';
-
+import { ToastContainer, toast } from 'react-toastify';
 
 
 function AdminItems() {
@@ -16,6 +16,9 @@ function AdminItems() {
     const [update, setUpdate] = useState(false);
     const [updateId, setUpdateId] = useState("");
     const [products, SetProducts] = useState([])
+    const [allProducts, SetAllProducts] = useState([])
+    const [deliverdOrders, SetDeliverdOrders] = useState([])
+    const [userData, SetUserData] = useState([])
     const [fileInput, setFileInput] = useState("inputFile");
     let store = localStorage.getItem("token");
 
@@ -32,19 +35,50 @@ function AdminItems() {
 
     useEffect(() => {
         getProducts();
+
     }, []);
 
 
-    const getProducts = () => {
-        Axios.get("https://vgseafoods.herokuapp.com/getItemData")
+    const getProducts = async () => {
+        getAllOrder();
+        getDeliverdOrders();
+        getAllUser();
+        await Axios.get("https://vgseafoods.herokuapp.com/getItemData")
             .then(res => {
-                console.log(res);
+                console.log(res.data)
                 SetProducts(res.data);
             }).catch(err => {
                 console.log(err)
-            })
-    }
+            });
 
+    }
+    const getAllOrder = () => {
+        Axios.get("https://vgseafoods.herokuapp.com/getOrders")
+            .then(res => {
+                SetAllProducts(res.data);
+                // console.log(res.data);
+            }).catch(err => {
+                console.log(err)
+            });
+    }
+    const getDeliverdOrders = () => {
+        Axios.get("https://vgseafoods.herokuapp.com/getDeliverd")
+            .then(res => {
+                SetDeliverdOrders(res.data);
+                // console.log(res.data);
+            }).catch(err => {
+                console.log(err)
+            });
+    }
+    const getAllUser = () => {
+        Axios.get("https://vgseafoods.herokuapp.com/getAlluser")
+            .then(res => {
+                SetUserData(res.data);
+                console.log(res.data);
+            }).catch(err => {
+                console.log(err)
+            });
+    }
 
     const convertBase64 = (file) => {
         return new Promise((resolve, reject) => {
@@ -62,13 +96,13 @@ function AdminItems() {
     const handleFileRead = async (event) => {
         const file = event.target.files[0]
         const base64 = await convertBase64(file)
-        
+
         SetImage(base64)
 
     }
 
 
-    const submitProduct = (event) => {
+    const submitProduct = async (event) => {
 
         event.preventDefault()
 
@@ -79,10 +113,11 @@ function AdminItems() {
             image: image
         }
 
-        Axios.post('https://vgseafoods.herokuapp.com/postItemData', payload)
+        console.log(payload)
+        await Axios.post('https://vgseafoods.herokuapp.com/postItemData', payload)
             .then((result) => {
+                console.log(result)
                 getProducts();
-                event.target.value = null;
             })
 
         SetProductName("");
@@ -90,6 +125,7 @@ function AdminItems() {
         SetQuantity("");
         SetImage("");
         setFileInput("removeInput");
+
     }
 
 
@@ -101,7 +137,7 @@ function AdminItems() {
         console.log(payload);
         Axios.post("https://vgseafoods.herokuapp.com/deleteproduct", payload)
             .then(res => {
-                // console.log(res);
+                toast("Product Deleted Successfully...!");
                 getProducts();
             })
     }
@@ -144,76 +180,109 @@ function AdminItems() {
 
 
 
+    // console.log(allProducts);
+    // console.log(deliverdOrders);
+    // console.log(userData);
+    console.log(products);
 
 
 
     return (
         <div className="adminItems_page">
+            <ToastContainer
+                position="top-right"
+                autoClose={1500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
             <div className="navPage">
                 <NavPage />
-                
+            </div>
+            <div className="greeting_counts">
+                <div className="clients_counts">
+                    <p>Number of Clients</p>
+                    <h2>{userData.length}</h2>
+                </div>
+                <div className="total_Book">
+                    <p>Total Bookings</p>
+                    <h2>{allProducts.length + deliverdOrders.length}</h2>
+                </div>
+                <div className="pending_orders">
+                    <p>Pending Orders</p>
+                    <h2>{allProducts.length}</h2>
+                </div>
+                <div className="delivered_orders">
+                    <p>Delivered Orders</p>
+                    <h2>{deliverdOrders.length}</h2>
+                </div>
+
             </div>
             <div className="adminItems_container">
-                {/* <Link to="orderdetails">OrderDetails</Link> */}
-                <div className="add_product">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <form className="form_data">
-                                <h1>Add Your Product </h1>
-                                <fieldset>
-                                    <label>Product Name:</label>
-                                    <input type="text" id="name" value={productName} onChange={(e) => { SetProductName(e.target.value) }} />
 
-                                    <label>Cost:</label>
-                                    <input type="text" id="name" value={cost} onChange={(e) => { SetCost(e.target.value) }} />
+                <div className="addProduct_productDetails">
+                    <div className="product_container">
+                        {
+                            products.map(post => {
+                                return (
+                                    <div key={post._id} className="product_card">
+                                        <div className="product_details">
+                                            <img src={post.image} alt="" />
+                                            <span><p className="product_name">{post.productName}</p></span>
+                                            <span><p>Cost : {post.cost}/1KG</p></span>
+                                            <span><p>Quantity : {post.quantity}</p></span>
+                                            <Button className="btn" variant="outlined" onClick={() => updateProduct(post._id)}>Update</Button>
+                                            <Button className="btn" variant="outlined" color="error" onClick={() => deleteProduct(post._id)}>Delete</Button>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                    <div className="add_product">
+                        <div className="row">
+                            <div className="col-md-12">
+                                <form className="form_data">
+                                    <h1>Add Product</h1>
+                                    <fieldset>
+                                        <label>Product Name:</label>
+                                        <input type="text" id="name" value={productName} onChange={(e) => { SetProductName(e.target.value) }} />
 
-                                    <label>Quantity:</label>
-                                    <input type="text" id="name" value={quantity} onChange={(e) => { SetQuantity(e.target.value) }} />
+                                        <label>Cost:</label>
+                                        <input type="text" id="name" value={cost} onChange={(e) => { SetCost(e.target.value) }} />
 
+                                        <label>Quantity:</label>
+                                        <input type="text" id="name" value={quantity} onChange={(e) => { SetQuantity(e.target.value) }} />
+
+                                        {
+                                            update ? "" :
+                                                <label className="file">
+                                                    <input key={fileInput} type="file" id="file" aria-label="File browser example" encType="multipart/form-data"
+                                                        required onChange={handleFileRead} />
+                                                    <span className="file-custom"></span>
+                                                </label>
+
+                                        }
+
+
+                                    </fieldset>
                                     {
-                                        update ? "" :
-                                            <label className="file">
-                                                <input key={fileInput} type="file" id="file" aria-label="File browser example" encType="multipart/form-data"
-                                                    required onChange={handleFileRead} />
-                                                <span className="file-custom"></span>
-                                            </label>
-
+                                        update ? <button type="submit" onClick={updatenewProduct}>Update</button> : <button type="submit" onClick={submitProduct}>Submit</button>
                                     }
 
-
-                                </fieldset>
-                                {
-                                    update ? <button type="submit" onClick={updatenewProduct}>Update</button> : <button type="submit" onClick={submitProduct}>Submit</button>
-                                }
-
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div>
-                <div className="product_container">
-                    {
-                        products.map(post => {
-                            return (
-                                <div key={post._id} className="product_card">
-                                    <div className="product_details">
-                                        <img src={post.image} alt="" />
-                                        <span><h4>{post.productName}</h4></span>
-                                        <span><h5>Cost : {post.cost}/1KG</h5></span>
-                                        <span><h5>Quantity : {post.quantity}</h5></span>
-                                    </div>
-                                    <div className="product_buttons">
-                                        <button className="btn2 second" onClick={() => updateProduct(post._id)}>Update</button>
-                                        <button className="btn first" onClick={() => deleteProduct(post._id)}>Delete</button>
-                                    </div>
 
-                                </div>
-                            )
-                        })
-                    }
                 </div>
+
             </div>
+
         </div>
 
     )

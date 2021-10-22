@@ -1,45 +1,131 @@
 
-.adminItems_container{
-    margin: 30px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+
+.adminItems_page{
+  position: relative;
+}
+.adminItems_page .greeting_counts{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+}
+.adminItems_page .greeting_counts div{
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  color: white;
+  cursor: pointer;
+  margin: 50px 30px 50px 30px ;
+  padding: 20px 40px 20px 40px;
+  border-radius: 15px;
+  min-width: 200px;
+  transition: transform 1s;
+  
+}
+.adminItems_page .greeting_counts div:hover{
+  transform: scale(1.10); 
+}
+.adminItems_page .greeting_counts h2{
+  font-size: 45px;
+  font-weight: 700;
+}
+.adminItems_page .greeting_counts p{
+  font-weight: 600;
+}
+.adminItems_page .greeting_counts .clients_counts{
+  
+  background: #00B4DB;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
-.adminItems_container .admin_inputCard{
-    padding: 10px;
-    height: 100px;
-    font-size: 20px;
-    background-color: whitesmoke;
-    font-weight: 500;
+.adminItems_page .greeting_counts .total_Book{
+  background: #0F2027;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+}
+.adminItems_page .greeting_counts .pending_orders{
+  background: #ad5389;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #3c1053, #ad5389);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #3c1053, #ad5389); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+
+}
+.adminItems_page .greeting_counts .delivered_orders{
+  background: #FF416C;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FF4B2B, #FF416C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.adminItems_container .admin_inputCard form{
-    display: flex;
-    margin-top: 20px;
 
+
+
+
+
+
+
+.adminItems_page .adminItems_container .addProduct_productDetails{
+  display: flex;
+  margin: 20px 30px 20px 30px;
+  
+}
+.adminItems_page .adminItems_container .addProduct_productDetails .product_container{
+  min-width: 650px;
+  margin-right: 60px;
+}
+.product_container .product_card img{
+  width: 150px;
+  margin-right: 20px;
 }
 
-.adminItems_container .admin_inputCard form input, label{
-    margin-left: 10px;
+.product_container .product_card{
+  display: flex;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  margin: 10px 0px 10px 0px;
+  width: 700px;
 }
 
-.adminItems_container .admin_inputCard form input{
-    width: 180px;
-    border-radius: 2px;
+.product_container .product_card .product_details{
+  display: flex;
+  align-items: center;
+}
+.product_container .product_card .product_details .btn{
+  margin-right: 5px;
+}
+.product_container .product_card .product_details .product_name{
+  font-size: 13px;
+  font-weight: 700;
+  width: 80px;
 }
 
-.adminItems_container .add_product form {
+.product_container .product_card span{
+  width: 100px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+.adminItems_container .addProduct_productDetails .add_product{
+  width: 450px;
+  height: 650px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  padding: 20px;
+}
+
+
+.adminItems_container .addProduct_productDetails  .add_product form {
     margin: 10px auto;
     padding: 10px 20px;
     background: #f4f7f8;
     border-radius: 8px;
   }
   
-.adminItems_container .add_product  h1 {
+  .adminItems_container .addProduct_productDetails  .add_product  h1 {
     margin: 0 0 30px 0;
     text-align: center;
   }
   
-  .adminItems_container .add_product input[type="text"],
+  .adminItems_container .addProduct_productDetails  .add_product input[type="text"],
   input[type="password"],
   input[type="date"],
   input[type="datetime"],
@@ -66,7 +152,7 @@
   }
 
 
-  .adminItems_container .add_product button {
+  .adminItems_container .addProduct_productDetails  .add_product button {
     padding: 19px 39px 18px 39px;
     color: #FFF;
     background-color: rgb(28, 215, 221);
@@ -82,134 +168,19 @@
     margin-bottom: 10px;
   }
   
-.adminItems_container .add_product fieldset {
+  .adminItems_container .addProduct_productDetails  .add_product fieldset {
     margin-bottom: 30px;
     border: none;
   }
     
-  .adminItems_container .add_product label {
+  .adminItems_container .addProduct_productDetails  .add_product label {
     display: block;
     margin-bottom: 8px;
   }
   
 
-  .product_container .product_card{
-    box-shadow: 0 0 15px -2px #444444;
-    margin: 20px;
-    padding: 8px;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .product_container .product_card .product_buttons{
-    display: flex;
-  }
-
-  .product_container .product_card .product_details{
-    display: flex;
-    align-items: center;
-  }
-
-  .product_container .product_card span{
-    margin-left: 40px;
-    width: 180px;
-  }
-
-  .product_container .product_card img{
-    width: 200px;
-  }
-
-
-
-
-.product_container  .btn {
-    box-sizing: border-box;
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
-    background-color: transparent;
-    border: 2px solid #e74c3c;
-    border-radius: 0.6em;
-    color: #e74c3c;
-    cursor: pointer;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-align-self: center;
-        -ms-flex-item-align: center;
-            align-self: center;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1;
-    margin: 10px;
-    padding: 1.2em 1.6em;
-    text-decoration: none;
-    text-align: center;
-    text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-  }
-  .product_container .btn:hover, .btn:focus {
-    color: #fff;
-    outline: 0;
-  }
   
-  .product_container .first {
-    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-  }
-  .product_container .first:hover {
-    box-shadow: 0 0 40px 40px #e74c3c inset;
-  }
-
-
   
-.product_container  .btn2 {
-  box-sizing: border-box;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  background-color: transparent;
-  border: 2px solid rgb(28, 215, 221);
-  border-radius: 0.6em;
-  color: rgb(28, 215, 221);
-  cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-self: center;
-      -ms-flex-item-align: center;
-          align-self: center;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1;
-  margin: 20px;
-  padding: 1.2em 1.6em;
-  text-decoration: none;
-  text-align: center;
-  text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-}
-.product_container .btn2:hover, .btn2:focus {
-  color: #fff;
-  outline: 0;
-}
-
-.product_container .second {
-  -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-}
-.product_container .second:hover {
-  box-shadow: 0 0 40px 40px rgb(28, 215, 221) inset;
-}
-  
-
-
-
-
  
 @media only screen and (max-width: 767px){
   .adminItems_container .add_product  h1 {
