@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react'
 import './AdminItems.css';
 import Axios from 'axios';
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
 import NavPage from '../NavPage/NavPage';
 import { ToastContainer, toast } from 'react-toastify';
+import BeatLoader from "react-spinners/BeatLoader";
+import PulseLoader from "react-spinners/PulseLoader";
 
 
 function AdminItems() {
@@ -20,17 +21,10 @@ function AdminItems() {
     const [deliverdOrders, SetDeliverdOrders] = useState([])
     const [userData, SetUserData] = useState([])
     const [fileInput, setFileInput] = useState("inputFile");
-    let store = localStorage.getItem("token");
-
-    Axios.interceptors.request.use(
-        config => {
-            config.headers.Authorization = store;
-            return config;
-        },
-        error => {
-            return Promise.reject(error);
-        }
-    )
+    const [toggle, setToggle] = useState("false");
+    const [loader, setLoader] = useState(true);
+    const [pulseLoader, setPulseLoader] = useState([]);
+    const [pulseToggler, setPulseToggler] = useState(false);
 
 
     useEffect(() => {
@@ -43,17 +37,19 @@ function AdminItems() {
         getAllOrder();
         getDeliverdOrders();
         getAllUser();
-        await Axios.get("https://vgseafoods.herokuapp.com/getItemData")
+
+        await Axios.get("http://localhost:8000/getItemData")
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 SetProducts(res.data);
+                setLoader(false);
             }).catch(err => {
                 console.log(err)
             });
 
     }
     const getAllOrder = () => {
-        Axios.get("https://vgseafoods.herokuapp.com/getOrders")
+        Axios.get("http://localhost:8000/getOrders")
             .then(res => {
                 SetAllProducts(res.data);
                 // console.log(res.data);
@@ -62,7 +58,7 @@ function AdminItems() {
             });
     }
     const getDeliverdOrders = () => {
-        Axios.get("https://vgseafoods.herokuapp.com/getDeliverd")
+        Axios.get("http://localhost:8000/getDeliverd")
             .then(res => {
                 SetDeliverdOrders(res.data);
                 // console.log(res.data);
@@ -71,10 +67,10 @@ function AdminItems() {
             });
     }
     const getAllUser = () => {
-        Axios.get("https://vgseafoods.herokuapp.com/getAlluser")
+        Axios.get("http://localhost:8000/getAlluser")
             .then(res => {
                 SetUserData(res.data);
-                console.log(res.data);
+                // console.log(res.data);
             }).catch(err => {
                 console.log(err)
             });
@@ -105,6 +101,7 @@ function AdminItems() {
     const submitProduct = async (event) => {
 
         event.preventDefault()
+        setPulseToggler(true)
 
         const payload = {
             productName: productName,
@@ -114,31 +111,39 @@ function AdminItems() {
         }
 
         console.log(payload)
-        await Axios.post('https://vgseafoods.herokuapp.com/postItemData', payload)
-            .then((result) => {
+        const newData = await Axios.post('http://localhost:8000/postItemData', payload)
+            .then(result => {
                 console.log(result)
+                toast("Product Added Successfully...!");
+                setToggle(!toggle);
+                setPulseToggler(false);
                 getProducts();
+                SetProductName("");
+                SetCost("");
+                SetQuantity("");
+                SetImage("");
+                setFileInput("removeInput");
             })
+       
 
-        SetProductName("");
-        SetCost("");
-        SetQuantity("");
-        SetImage("");
-        setFileInput("removeInput");
+
 
     }
 
 
     const deleteProduct = (productid) => {
+        setPulseLoader(productid);
         const payload = {
             id: productid
         }
 
         console.log(payload);
-        Axios.post("https://vgseafoods.herokuapp.com/deleteproduct", payload)
+        Axios.post("http://localhost:8000/deleteproduct", payload)
             .then(res => {
-                toast("Product Deleted Successfully...!");
+                setToggle(!toggle);
                 getProducts();
+                toast("Product Deleted Successfully...!");
+                setPulseLoader([])
             })
     }
 
@@ -166,7 +171,7 @@ function AdminItems() {
         }
         console.log(payload);
 
-        Axios.post("https://vgseafoods.herokuapp.com/updateproduct", payload)
+        Axios.post("http://localhost:8000/updateproduct", payload)
             .then(res => {
                 console.log(res);
                 setUpdate(false);
@@ -175,6 +180,8 @@ function AdminItems() {
                 SetCost("");
                 SetQuantity("");
                 SetImage("");
+                toast("Product Updated Successfully...!");
+
             })
     }
 
@@ -183,105 +190,120 @@ function AdminItems() {
     // console.log(allProducts);
     // console.log(deliverdOrders);
     // console.log(userData);
-    console.log(products);
+    // console.log(products);
 
 
 
     return (
         <div className="adminItems_page">
-            <ToastContainer
-                position="top-right"
-                autoClose={1500}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-            />
-            <div className="navPage">
-                <NavPage />
-            </div>
-            <div className="greeting_counts">
-                <div className="clients_counts">
-                    <p>Number of Clients</p>
-                    <h2>{userData.length}</h2>
-                </div>
-                <div className="total_Book">
-                    <p>Total Bookings</p>
-                    <h2>{allProducts.length + deliverdOrders.length}</h2>
-                </div>
-                <div className="pending_orders">
-                    <p>Pending Orders</p>
-                    <h2>{allProducts.length}</h2>
-                </div>
-                <div className="delivered_orders">
-                    <p>Delivered Orders</p>
-                    <h2>{deliverdOrders.length}</h2>
-                </div>
+            {
+                loader ? (
+                    <div className="loader">
+                        <BeatLoader color="rgb(28, 215, 221)" loading="true" />
+                    </div>
 
-            </div>
-            <div className="adminItems_container">
+                ) : (
+                    <div>
+                        <ToastContainer
+                            position="top-right"
+                            autoClose={1500}
+                            hideProgressBar={false}
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                        />
+                        <div className="navPage">
+                            <NavPage />
+                        </div>
+                        <div className="greeting_counts">
+                            <div className="clients_counts">
+                                <p>Number of Clients</p>
+                                <h2>{userData.length}</h2>
+                            </div>
+                            <div className="total_Book">
+                                <p>Total Bookings</p>
+                                <h2>{allProducts.length + deliverdOrders.length}</h2>
+                            </div>
+                            <div className="pending_orders">
+                                <p>Pending Orders</p>
+                                <h2>{allProducts.length}</h2>
+                            </div>
+                            <div className="delivered_orders">
+                                <p>Delivered Orders</p>
+                                <h2>{deliverdOrders.length}</h2>
+                            </div>
 
-                <div className="addProduct_productDetails">
-                    <div className="product_container">
-                        {
-                            products.map(post => {
-                                return (
-                                    <div key={post._id} className="product_card">
-                                        <div className="product_details">
-                                            <img src={post.image} alt="" />
-                                            <span><p className="product_name">{post.productName}</p></span>
-                                            <span><p>Cost : {post.cost}/1KG</p></span>
-                                            <span><p>Quantity : {post.quantity}</p></span>
-                                            <Button className="btn" variant="outlined" onClick={() => updateProduct(post._id)}>Update</Button>
-                                            <Button className="btn" variant="outlined" color="error" onClick={() => deleteProduct(post._id)}>Delete</Button>
+                        </div>
+                        <div className="adminItems_container">
+
+                            <div className="addProduct_productDetails">
+                                <div className="product_container">
+                                    {
+                                        products.map(post => {
+                                            return (
+                                                <div key={post._id} className="product_card">
+                                                    <div className="product_details">
+                                                        <img src={post.image} alt="" />
+                                                        <span><p className="product_name">{post.productName}</p></span>
+                                                        <span><p>Cost : {post.cost}/1KG</p></span>
+                                                        <span><p>Quantity : {post.quantity}</p></span>
+                                                        <Button className="btn" variant="outlined" onClick={() => updateProduct(post._id)}>Update</Button>
+                                                        <Button className="btn" variant="contained" color="secondary" color="error" onClick={() => deleteProduct(post._id)}>delete</Button>
+                                                    </div>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
+                                <div className="add_product">
+                                    <div className="row">
+                                        <div className="col-md-12">
+                                            <form className="form_data">
+                                                <h1>Add Product</h1>
+                                                <fieldset>
+                                                    <label>Product Name:</label>
+                                                    <input type="text" id="name" value={productName} onChange={(e) => { SetProductName(e.target.value) }} />
+
+                                                    <label>Cost:</label>
+                                                    <input type="text" id="name" value={cost} onChange={(e) => { SetCost(e.target.value) }} />
+
+                                                    <label>Quantity:</label>
+                                                    <input type="text" id="name" value={quantity} onChange={(e) => { SetQuantity(e.target.value) }} />
+
+                                                    {
+                                                        update ? "" :
+                                                            <label className="file">
+                                                                <input key={fileInput} type="file" id="file" aria-label="File browser example" encType="multipart/form-data"
+                                                                    required onChange={handleFileRead} />
+                                                                <span className="file-custom"></span>
+                                                            </label>
+
+                                                    }
+
+
+                                                </fieldset>
+                                                {
+                                                    update ? <button type="submit" onClick={updatenewProduct}>Update</button> : <button type="submit" onClick={submitProduct}>{
+                                                        pulseToggler ? <span><PulseLoader color="white" size={8} ></PulseLoader></span> : <span>Submit</span>
+                                                    }</button>
+                                                }
+
+                                            </form>
                                         </div>
                                     </div>
-                                )
-                            })
-                        }
-                    </div>
-                    <div className="add_product">
-                        <div className="row">
-                            <div className="col-md-12">
-                                <form className="form_data">
-                                    <h1>Add Product</h1>
-                                    <fieldset>
-                                        <label>Product Name:</label>
-                                        <input type="text" id="name" value={productName} onChange={(e) => { SetProductName(e.target.value) }} />
+                                </div>
 
-                                        <label>Cost:</label>
-                                        <input type="text" id="name" value={cost} onChange={(e) => { SetCost(e.target.value) }} />
-
-                                        <label>Quantity:</label>
-                                        <input type="text" id="name" value={quantity} onChange={(e) => { SetQuantity(e.target.value) }} />
-
-                                        {
-                                            update ? "" :
-                                                <label className="file">
-                                                    <input key={fileInput} type="file" id="file" aria-label="File browser example" encType="multipart/form-data"
-                                                        required onChange={handleFileRead} />
-                                                    <span className="file-custom"></span>
-                                                </label>
-
-                                        }
-
-
-                                    </fieldset>
-                                    {
-                                        update ? <button type="submit" onClick={updatenewProduct}>Update</button> : <button type="submit" onClick={submitProduct}>Submit</button>
-                                    }
-
-                                </form>
                             </div>
+
                         </div>
                     </div>
 
-                </div>
+                )
+            }
 
-            </div>
 
         </div>
 
