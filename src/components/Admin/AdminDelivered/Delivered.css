@@ -1,3 +1,6 @@
+.deliver_page .deliver_container .main_card{
+    margin: 30px 50px 20px 50px;
+}
 .deliver_page .deliver_container .main_card .accordian{
     margin: 10px;
     padding: 10px 30px 10px 30px;

@@ -21,6 +21,11 @@
 .admin_navpage  .nav_page nav .container-fluid{
     margin: 0px 30px 0px 40px;
 }
+.admin_navpage  .nav_page nav .container-fluid .logo_name{
+    display: flex;
+    list-style: none;
+    text-decoration: none;
+}
 .admin_navpage  .nav_page nav .container-fluid img{
     width: 70px;
     margin-right: 10px;
@@ -40,7 +45,7 @@
 }
 
 .admin_navpage .nav_page .navbar-nav ul li {
-    width: 80px;
+    min-width: 80px;
     font-weight: 700;
     text-align: center;
     margin-left: 40px;   

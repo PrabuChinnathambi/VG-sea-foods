@@ -10,8 +10,14 @@ function NavPage() {
                 <div className="nav_page">
                     <nav className="navbar navbar-expand-lg navbar-dark">
                         <div className="container-fluid">
-                            <img src={Logo} alt="" />
-                            <p className="name">Sea Foods</p>
+
+                            <Link to="/adminDashboard" className="logo_name">
+                                <img src={Logo} alt="" />
+                                <p className="name">Sea Foods</p>
+                            </Link>
+
+
+
                             <div className="toggler_button">
                                 <button className="navbar-toggler bg-dark" type="button" data-toggle="collapse" data-target="#navbarNav">
                                     <span className="navbar-toggler-icon"></span>
