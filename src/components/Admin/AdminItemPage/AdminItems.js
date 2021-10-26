@@ -250,8 +250,6 @@ function AdminItems() {
                                                 <span><p>Quantity : {post.quantity}</p></span>
                                                 <Button className="btn" variant="outlined" onClick={() => updateProduct(post._id)}>Update</Button>
                                                 <Button  onClick={() => deleteProduct(post._id)} className="btn" variant="outlined" color="error" >Delete</Button>
-
-
                                             </div>
                                         </div>
                                     )

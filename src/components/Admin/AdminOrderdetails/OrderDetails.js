@@ -42,6 +42,7 @@ function OrderDetails() {
         // console.log(payload);
         Axios.post('https://vgseafoods.herokuapp.com/deliverOrder', payload)
             .then(res => {
+                toast("Product Delivered Successfully...!");
                 console.log(res);
                 deleteOrderData(item._id);
             }).catch(err => {
@@ -56,7 +57,7 @@ function OrderDetails() {
         Axios.post('https://vgseafoods.herokuapp.com/deleteOrderProduct', payload)
             .then(res => {
                 console.log(res);
-                toast("Product removed from cart")
+                // toast("Product removed from cart")
                 getProducts();
 
             }).catch(err => {
@@ -74,6 +75,17 @@ function OrderDetails() {
                 <NavPage />
             </div>
             <div className="order_container">
+                <ToastContainer
+                    position="top-right"
+                    autoClose={1500}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
                 {
                     orderData.slice().reverse().map(item => {
                         return (
@@ -102,9 +114,10 @@ function OrderDetails() {
                                 </div>
                                 <div className="btn_deliverd">
                                     <Button onClick={() => handleDeliverdClick(item)} variant="contained" color="secondary" className="delete_button">
-                                        {
+                                        Deliver
+                                        {/* {
                                             deleteLoader === item._id ? <span><PulseLoader color="white" size={8} ></PulseLoader></span> : <span>Deliverd</span>
-                                        }
+                                        } */}
                                     </Button>
                                     {/* <Button  variant="contained" color="primary"></Button> */}
                                 </div>
