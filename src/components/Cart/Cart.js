@@ -8,6 +8,7 @@ import { IconButton } from '@material-ui/core';
 import { Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
 import OpenPage from '../OpenPage/OpenPage';
 import cartImg from '../../images/cartImg.jpg';
+import arrow from '../../images/Icons/double-down.png';
 import Footer from '../Footer/Footer';
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -242,7 +243,7 @@ function Cart() {
                             <p>What are the products did have added into the cart. It will shown below with cost details. If you want increase the quantity of any product you can do it easily.</p>
                             <div className="scroll">
                                 <p>scroll down</p>
-                                <img src="https://img.icons8.com/ios-glyphs/2x/4a90e2/double-down.png" alt="scroll" />
+                                <img src={arrow} alt="scroll" />
                             </div>
 
                         </div>

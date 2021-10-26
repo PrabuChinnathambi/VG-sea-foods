@@ -7,6 +7,8 @@ import contactIcon from '../../images/Icons/contact-us.png';
 import facebookIcon from '../../images/Icons/facebooklogo.png';
 import instaIcon from '../../images/Icons/instalogo.png';
 import twitterIcon from '../../images/Icons/twitterlogo.png';
+import arrow from '../../images/Icons/double-down.png';
+
 import Feedback from '../Feedback/Feedback';
 import Footer from '../Footer/Footer';
 // import contactImg from '../../images/contactImg.jpg';
@@ -27,7 +29,8 @@ function Contact() {
                     <p>We look forward to hearing from you, feel free to contact us at any time. If you have any questions about our services you may contact us by fill in this form.</p>
                     <div className="scroll">
                         <p>scroll down</p>
-                        <img src="https://img.icons8.com/ios-glyphs/2x/4a90e2/double-down.png" alt="scroll" />
+                        <img src={arrow} alt="scroll" />
+                        
                     </div>
 
                 </div>

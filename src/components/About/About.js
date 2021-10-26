@@ -8,6 +8,8 @@ import aboutMeat1 from '../../images/aboutMeat1.jpg';
 import aboutMeat2 from '../../images/aboutMeat2.jpg';
 import aboutMeat3 from '../../images/aboutMeat3.jpg';
 import Footer from '../Footer/Footer';
+import arrow from '../../images/Icons/double-down.png';
+
 
 
 function About() {

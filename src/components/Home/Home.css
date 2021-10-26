@@ -167,6 +167,7 @@
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6);
     -o-box-shadow: 0 0 10px rgba(0,0,0,0.6);
     width: 310px;
+    padding-bottom: 30px;
     cursor: pointer;
     
 }
@@ -198,16 +199,16 @@
 
 .home_products .home_productCard .card_details .product_name{
     /* border: 1px solid black; */
-    font-size: 20px;
+    
     font-weight: 700;
     width: 250px;
-    height: 50px;
+    min-height: 30px;
 }
 
 
-.home_products .home_productCard .card_details .product_cost p{
+.home_products .home_productCard .card_details .product_cost {
     margin: 10px;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
 }
 .home_products .home_productCard .star{
