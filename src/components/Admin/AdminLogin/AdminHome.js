@@ -1,17 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './AdminHome.css';
 import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
-
+import {useSelector, useDispatch} from 'react-redux';
+import {getAdminProducts} from '../../../redux/actions/userActions'
 
 function AdminHome() {
 
     const history = useHistory();
+    const dispatch = useDispatch()
 
     const [username, setUsename] = useState("");
     const [password, setPassword] = useState("");
     const [admincnfm, setAdmincnfm] = useState(false);
+
+    useEffect(() => {
+        
+        Axios.get("http://localhost:8000/getItemData")
+            .then(res => {
+                dispatch(getAdminProducts(res.data));
+            }).catch(err => {
+                console.log(err)
+            });
+    })
 
 
     const submitLogin = () => {

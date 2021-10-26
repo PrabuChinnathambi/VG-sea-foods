@@ -88,9 +88,12 @@ background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, F
 
 .product_container .product_card{
   display: flex;
+  align-items: center;
+  justify-content:space-between;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   margin: 10px 0px 10px 0px;
-  width: 700px;
+  min-width: 700px;
+  min-height: 90px ;
 }
 
 .product_container .product_card .product_details{
@@ -98,7 +101,9 @@ background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, F
   align-items: center;
 }
 .product_container .product_card .product_details .btn{
+  display:inline-block;
   margin-right: 5px;
+  width: 80px;
 }
 .product_container .product_card .product_details .product_name{
   font-size: 13px;

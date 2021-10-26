@@ -6,3 +6,10 @@ export const setUser = (value) => {
         payload : value,
     };
 };
+
+export const getAdminProducts = (value) => {
+    return{
+        type : ActionTypes.GET_ADMIN_PRODUCTS,
+        payload : value,
+    };
+};

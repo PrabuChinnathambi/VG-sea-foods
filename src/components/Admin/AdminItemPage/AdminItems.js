@@ -6,6 +6,7 @@ import NavPage from '../NavPage/NavPage';
 import { ToastContainer, toast } from 'react-toastify';
 import BeatLoader from "react-spinners/BeatLoader";
 import PulseLoader from "react-spinners/PulseLoader";
+import MoonLoader from "react-spinners/MoonLoader";
 
 
 function AdminItems() {
@@ -23,8 +24,11 @@ function AdminItems() {
     const [fileInput, setFileInput] = useState("inputFile");
     const [toggle, setToggle] = useState("false");
     const [loader, setLoader] = useState(true);
-    const [pulseLoader, setPulseLoader] = useState([]);
+    const [pulseLoaderID, setPulseLoaderID] = useState([]);
     const [pulseToggler, setPulseToggler] = useState(false);
+
+
+
 
 
     useEffect(() => {
@@ -38,7 +42,7 @@ function AdminItems() {
         getDeliverdOrders();
         getAllUser();
 
-        await Axios.get("http://localhost:8000/getItemData")
+        await Axios.get("https://vgseafoods.herokuapp.com/getItemData")
             .then(res => {
                 // console.log(res.data)
                 SetProducts(res.data);
@@ -49,7 +53,7 @@ function AdminItems() {
 
     }
     const getAllOrder = () => {
-        Axios.get("http://localhost:8000/getOrders")
+        Axios.get("https://vgseafoods.herokuapp.com/getOrders")
             .then(res => {
                 SetAllProducts(res.data);
                 // console.log(res.data);
@@ -58,7 +62,7 @@ function AdminItems() {
             });
     }
     const getDeliverdOrders = () => {
-        Axios.get("http://localhost:8000/getDeliverd")
+        Axios.get("https://vgseafoods.herokuapp.com/getDeliverd")
             .then(res => {
                 SetDeliverdOrders(res.data);
                 // console.log(res.data);
@@ -67,7 +71,7 @@ function AdminItems() {
             });
     }
     const getAllUser = () => {
-        Axios.get("http://localhost:8000/getAlluser")
+        Axios.get("https://vgseafoods.herokuapp.com/getAlluser")
             .then(res => {
                 SetUserData(res.data);
                 // console.log(res.data);
@@ -111,10 +115,11 @@ function AdminItems() {
         }
 
         console.log(payload)
-        const newData = await Axios.post('http://localhost:8000/postItemData', payload)
+        await Axios.post('https://vgseafoods.herokuapp.com/postItemData', payload)
             .then(result => {
                 console.log(result)
                 toast("Product Added Successfully...!");
+                setFileInput("removeInput");
                 setToggle(!toggle);
                 setPulseToggler(false);
                 getProducts();
@@ -122,9 +127,8 @@ function AdminItems() {
                 SetCost("");
                 SetQuantity("");
                 SetImage("");
-                setFileInput("removeInput");
+
             })
-       
 
 
 
@@ -132,18 +136,19 @@ function AdminItems() {
 
 
     const deleteProduct = (productid) => {
-        setPulseLoader(productid);
+        setPulseLoaderID(productid);
         const payload = {
             id: productid
         }
 
         console.log(payload);
-        Axios.post("http://localhost:8000/deleteproduct", payload)
+        Axios.post("https://vgseafoods.herokuapp.com/deleteproduct", payload)
             .then(res => {
+                setPulseLoaderID([])
                 setToggle(!toggle);
                 getProducts();
                 toast("Product Deleted Successfully...!");
-                setPulseLoader([])
+
             })
     }
 
@@ -171,7 +176,7 @@ function AdminItems() {
         }
         console.log(payload);
 
-        Axios.post("http://localhost:8000/updateproduct", payload)
+        Axios.post("https://vgseafoods.herokuapp.com/updateproduct", payload)
             .then(res => {
                 console.log(res);
                 setUpdate(false);
@@ -196,113 +201,105 @@ function AdminItems() {
 
     return (
         <div className="adminItems_page">
-            {
-                loader ? (
-                    <div className="loader">
-                        <BeatLoader color="rgb(28, 215, 221)" loading="true" />
+            <div>
+                <ToastContainer
+                    position="top-right"
+                    autoClose={1500}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
+                <div className="navPage">
+                    <NavPage />
+                </div>
+                <div className="greeting_counts">
+                    <div className="clients_counts">
+                        <p>Number of Clients</p>
+                        <h2>{userData.length}</h2>
+                    </div>
+                    <div className="total_Book">
+                        <p>Total Bookings</p>
+                        <h2>{allProducts.length + deliverdOrders.length}</h2>
+                    </div>
+                    <div className="pending_orders">
+                        <p>Pending Orders</p>
+                        <h2>{allProducts.length}</h2>
+                    </div>
+                    <div className="delivered_orders">
+                        <p>Delivered Orders</p>
+                        <h2>{deliverdOrders.length}</h2>
                     </div>
 
-                ) : (
-                    <div>
-                        <ToastContainer
-                            position="top-right"
-                            autoClose={1500}
-                            hideProgressBar={false}
-                            newestOnTop={false}
-                            closeOnClick
-                            rtl={false}
-                            pauseOnFocusLoss
-                            draggable
-                            pauseOnHover
-                        />
-                        <div className="navPage">
-                            <NavPage />
-                        </div>
-                        <div className="greeting_counts">
-                            <div className="clients_counts">
-                                <p>Number of Clients</p>
-                                <h2>{userData.length}</h2>
-                            </div>
-                            <div className="total_Book">
-                                <p>Total Bookings</p>
-                                <h2>{allProducts.length + deliverdOrders.length}</h2>
-                            </div>
-                            <div className="pending_orders">
-                                <p>Pending Orders</p>
-                                <h2>{allProducts.length}</h2>
-                            </div>
-                            <div className="delivered_orders">
-                                <p>Delivered Orders</p>
-                                <h2>{deliverdOrders.length}</h2>
-                            </div>
+                </div>
+                <div className="adminItems_container">
 
-                        </div>
-                        <div className="adminItems_container">
-
-                            <div className="addProduct_productDetails">
-                                <div className="product_container">
-                                    {
-                                        products.map(post => {
-                                            return (
-                                                <div key={post._id} className="product_card">
-                                                    <div className="product_details">
-                                                        <img src={post.image} alt="" />
-                                                        <span><p className="product_name">{post.productName}</p></span>
-                                                        <span><p>Cost : {post.cost}/1KG</p></span>
-                                                        <span><p>Quantity : {post.quantity}</p></span>
-                                                        <Button className="btn" variant="outlined" onClick={() => updateProduct(post._id)}>Update</Button>
-                                                        <Button className="btn" variant="contained" color="secondary" color="error" onClick={() => deleteProduct(post._id)}>delete</Button>
-                                                    </div>
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                </div>
-                                <div className="add_product">
-                                    <div className="row">
-                                        <div className="col-md-12">
-                                            <form className="form_data">
-                                                <h1>Add Product</h1>
-                                                <fieldset>
-                                                    <label>Product Name:</label>
-                                                    <input type="text" id="name" value={productName} onChange={(e) => { SetProductName(e.target.value) }} />
-
-                                                    <label>Cost:</label>
-                                                    <input type="text" id="name" value={cost} onChange={(e) => { SetCost(e.target.value) }} />
-
-                                                    <label>Quantity:</label>
-                                                    <input type="text" id="name" value={quantity} onChange={(e) => { SetQuantity(e.target.value) }} />
-
-                                                    {
-                                                        update ? "" :
-                                                            <label className="file">
-                                                                <input key={fileInput} type="file" id="file" aria-label="File browser example" encType="multipart/form-data"
-                                                                    required onChange={handleFileRead} />
-                                                                <span className="file-custom"></span>
-                                                            </label>
-
-                                                    }
+                    <div className="addProduct_productDetails">
+                        <div className="product_container">
+                            {
+                                products.map(post => {
+                                    return (
+                                        <div key={post._id} className="product_card">
+                                            <div className="product_details">
+                                                <img src={post.image} alt="" />
+                                                <span><p className="product_name">{post.productName}</p></span>
+                                                <span><p>Cost : {post.cost}/1KG</p></span>
+                                                <span><p>Quantity : {post.quantity}</p></span>
+                                                <Button className="btn" variant="outlined" onClick={() => updateProduct(post._id)}>Update</Button>
+                                                <Button  onClick={() => deleteProduct(post._id)} className="btn" variant="outlined" color="error" >Delete</Button>
 
 
-                                                </fieldset>
-                                                {
-                                                    update ? <button type="submit" onClick={updatenewProduct}>Update</button> : <button type="submit" onClick={submitProduct}>{
-                                                        pulseToggler ? <span><PulseLoader color="white" size={8} ></PulseLoader></span> : <span>Submit</span>
-                                                    }</button>
-                                                }
-
-                                            </form>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
+                                    )
+                                })
+                            }
                         </div>
+                        <div className="add_product">
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <form className="form_data">
+                                        <h1>Add Product</h1>
+                                        <fieldset>
+                                            <label>Product Name:</label>
+                                            <input type="text" id="name" value={productName} onChange={(e) => { SetProductName(e.target.value) }} />
+
+                                            <label>Cost:</label>
+                                            <input type="text" id="name" value={cost} onChange={(e) => { SetCost(e.target.value) }} />
+
+                                            <label>Quantity:</label>
+                                            <input type="text" id="name" value={quantity} onChange={(e) => { SetQuantity(e.target.value) }} />
+
+                                            {
+                                                update ? "" :
+                                                    <label className="file">
+                                                        <input key={fileInput} type="file" id="file" aria-label="File browser example" encType="multipart/form-data"
+                                                            required onChange={handleFileRead} />
+                                                        <span className="file-custom"></span>
+                                                    </label>
+
+                                            }
+
+
+                                        </fieldset>
+                                        {
+                                            update ? <button type="submit" onClick={updatenewProduct}>Update</button> : <button type="submit" onClick={submitProduct}>{
+                                                pulseToggler ? <span><PulseLoader color="white" size={8} ></PulseLoader></span> : <span>Submit</span>
+                                            }</button>
+                                        }
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
-                )
-            }
+                </div>
+            </div>
 
 
         </div>
