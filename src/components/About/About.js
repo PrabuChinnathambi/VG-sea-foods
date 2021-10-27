@@ -31,7 +31,7 @@ function About() {
                     <p>Most companies have fancy mission statements. Ours is simple. We want to help you eat the best meat possible. That's it. To do that, we're changing the entire category by focussing on few key things</p>
                     <div className="scroll">
                         <p>scroll down</p>
-                        <img src="https://img.icons8.com/ios-glyphs/2x/4a90e2/double-down.png" alt="scroll" />
+                        <img src={arrow} alt="scroll" />
                     </div>
 
                 </div>

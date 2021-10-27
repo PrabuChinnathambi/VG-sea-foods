@@ -195,6 +195,7 @@
 
 .home_products .home_productCard .card_details{
     margin: 20px;
+    text-align: center;
 }
 
 .home_products .home_productCard .card_details .product_name{

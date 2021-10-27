@@ -159,7 +159,17 @@ function Home() {
                     </div>
                 ) : (
                     <div>
-                        <ToastContainer autoClose={2000} />
+                        <ToastContainer
+                            position="top-right"
+                            autoClose={1500}
+                            hideProgressBar={false}
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                        />
                         <div className="home_navbar">
                             <OpenPage />
                         </div>

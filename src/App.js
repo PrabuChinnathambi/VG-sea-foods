@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import About from "./components/About/About";
 import Delivered from "./components/Admin/AdminDelivered/Delivered";
 import AdminItems from "./components/Admin/AdminItemPage/AdminItems";
-import AdminHome from "./components/Admin/AdminLogin/AdminHome";
+import AdminLogin from "./components/Admin/AdminLogin/AdminLogin";
 import OrderDetails from "./components/Admin/AdminOrderdetails/OrderDetails";
 import Cart from "./components/Cart/Cart";
 import Contact from "./components/Contact/Contact";
@@ -26,7 +26,7 @@ function App() {
           <Route path="/about" component={About} ></Route>
           <Route path="/contact" component={Contact} ></Route>
           <Route path="/cart" component={Cart} ></Route>
-          <Route path="/adminLogin" component={AdminHome} ></Route>
+          <Route path="/adminLogin" component={AdminLogin} ></Route>
           <Route path="/adminDashboard" component={AdminItems} ></Route>
           <Route path="/orderdetails" component={OrderDetails} ></Route>
           <Route path="/deliveredDetails" component={Delivered} ></Route>

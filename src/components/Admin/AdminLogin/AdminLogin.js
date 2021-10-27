@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import './AdminHome.css';
+import './AdminLogin.css';
 import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import {useSelector, useDispatch} from 'react-redux';
 import {getAdminProducts} from '../../../redux/actions/userActions'
 
-function AdminHome() {
+function AdminLogin() {
 
     const history = useHistory();
     const dispatch = useDispatch()
@@ -92,4 +92,4 @@ function AdminHome() {
     )
 }
 
-export default AdminHome
+export default AdminLogin

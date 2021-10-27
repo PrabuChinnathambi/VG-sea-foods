@@ -1,7 +1,6 @@
 
 
-.admin_orderPage .order_container{
-    
+.admin_orderPage .order_container{ 
     overflow-y:scroll;
     max-height: 480px;
     margin: 20px;
@@ -101,5 +100,59 @@
 }
 
 @media only screen and (max-width: 767px){
-
+    .admin_orderPage .order_container{ 
+        overflow-y:scroll;
+        max-height: unset;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px 10px 20px 10px;
+    
+    }
+    .admin_orderPage .order_container .orders{   
+        justify-content: center;
+        margin: 0px;
+        margin-bottom: 20px;
+        position: relative;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        background-color: whitesmoke;
+        padding: 30px 20px 30px 20px;
+        font-weight: 600;
+    }
+    .admin_orderPage .order_container label{
+        min-width: 70px;
+    
+    }
+    .admin_orderPage .order_container .name{
+        min-width: 120px;
+        min-height: 30px;
+        padding-left: 10px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        background-color: white;
+        
+    }
+    .admin_orderPage .order_container .phone{
+        min-width: 120px;
+        min-height: 30px;
+        padding-left: 10px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        background-color: white;
+        
+    }
+    .admin_orderPage .order_container .address{
+        min-width: 245px;
+        min-height: 80px;
+        padding-left: 10px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        background-color: white;
+        
+    }
+    .admin_orderPage .order_container .orders .time{
+        color: rgb(63, 62, 62);
+        font-size: 12px;
+        font-weight: 600;
+        position: absolute;
+        top:10px;
+        right: 10px;
+    }
 }
