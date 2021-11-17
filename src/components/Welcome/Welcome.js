@@ -4,9 +4,15 @@ import logo from '../../images/newlogo2.png';
 import { Typewriter } from 'react-simple-typewriter';
 import { Button, ButtonGroup } from '@material-ui/core';
 import { Link } from 'react-router-dom'
-
+import { useDispatch } from 'react-redux'
+import { registerToggle, loginToggle } from '../../redux/actions/userActions'
 
 function Welcome() {
+
+
+    const dispatch = useDispatch();
+
+
 
     const handleType = (count) => {
         // access word count number
@@ -16,6 +22,19 @@ function Welcome() {
     const handleDone = () => {
         // console.log(`Done after 5 loops!`)
     }
+
+    const handleRegisterToggle = () => {
+
+        dispatch(registerToggle());
+    }
+
+    const handleLoginToggle = () => {
+
+        dispatch(loginToggle());
+    }
+
+
+
 
 
 
@@ -48,9 +67,12 @@ function Welcome() {
                         </span>
                     </h1>
                 </div>
-                <div>
+                <div className="welcome_buttons">
                     <ButtonGroup className="button_group" variant="outlined" aria-label="outlined primary button group"  >
-                        <Link style={{ textDecoration: "none" }} to="/login"><Button className="button">Login</Button></Link>
+                        <Link onClick={handleLoginToggle} style={{ textDecoration: "none" }} to="/login"><Button className="button">Login</Button></Link>
+                    </ButtonGroup>
+                    <ButtonGroup className="button_group" variant="outlined" aria-label="outlined primary button group"  >
+                        <Link onClick={handleRegisterToggle} style={{ textDecoration: "none" }} to="/login"><Button className="button">Register</Button></Link>
                     </ButtonGroup>
                 </div>
                 <div className="admint_button_div">

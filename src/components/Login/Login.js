@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Login.css';
 import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
@@ -9,7 +9,11 @@ import { setUser } from '../../redux/actions/userActions';
 
 
 
+
 function Login() {
+
+    const togglecheck = useSelector(state => state.user.toggle);
+
     const history = useHistory();
     const dispatch = useDispatch();
     const [toggle, setToggle] = useState(true);
@@ -27,6 +31,14 @@ function Login() {
 
     
     const user = useSelector((state) => state.user);
+
+    useEffect(() => {
+       if(togglecheck){
+           setToggle(false);
+       }else{
+           setToggle(true)
+       }
+    }, [])
 
 
     const handleToggle = () => {

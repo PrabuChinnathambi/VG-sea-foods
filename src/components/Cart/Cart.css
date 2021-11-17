@@ -16,6 +16,7 @@
 }
 .cart_page .cartImg img{
   width: 100%;
+  min-width: 100%;
 }
 .cart_page .cart_nav{
   top:o;
@@ -72,12 +73,9 @@
   padding: 40px;
 }
 .cart_page .cart_container .cart_details .cart_card{
-    width: 700px;
+    
     background-color: whitesmoke;
-    box-shadow: 0 0 10px rgba(0,0,0,0.6);
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6);
-    -o-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     display: flex;
     align-items: center;
     margin: 20px 10px;
@@ -86,30 +84,37 @@
 
 
 .cart_page .cart_container .cart_details .cart_card img{
-    width: 300px;
+    width: 210px;
 }
 
 .cart_page .cart_container .cart_details .cart_card .cost_details {
     margin-left: 30px;
+    margin-top: 10px;
 }
 .cart_page .cart_container .cart_details .cart_card .cost_details h2{
-    font-size: 20px;
-    font-weight: 700;
-}
-.cart_page .cart_container .cart_details .cart_card .cost_details h3{
     font-size: 16px;
     font-weight: 700;
 }
+.cart_page .cart_container .cart_details .cart_card .cost_details h3{
+    font-size: 15px;
+    font-weight: 600;
+}
 
 .cart_page .cart_container .cart_details .cart_card .cost_details .drop_down select{
-    margin-top: 10px;
+    
     box-shadow: 0 0 5px rgba(0,0,0,0.6);
     -moz-box-shadow: 0 0 5px rgba(0,0,0,0.6);
     -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.6);
     -o-box-shadow: 0 0 5px rgba(0,0,0,0.6);
     border-radius: 8px;
-    padding: 5px;
-    width: 75px;
+    padding: 3px 6px;
+    width: 85px;
+}
+
+.cart_page .cart_container .cart_details .cart_card .cost_details  .delete_button{
+  width: 70px;
+  font-size: 10px;
+  margin-top: -30px;
 }
 
 .cart_page .cart_container .cart_payment .payment_container{
@@ -133,12 +138,20 @@
     display: flex;
     padding: 10px;   
 }
+.cart_page .cart_container .cart_payment .payment_container .payment_card .quantity{
+  margin-left: 10px;
+}
+.cart_page .cart_container .cart_payment .payment_container .payment_card .productName{
+  text-align: left;
+  width: 150px;
+
+}
 .cart_page .cart_container .cart_payment .payment_container .payment_card p{
     text-align: right;
-    /* border: 1px solid black; */
     width: 100px;
+    height: 50px;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 0px;
     
 }
@@ -151,8 +164,10 @@
 
 .cart_page .cart_container .cart_payment .payment_container .total p{
     padding: 20px;
-    font-size: 18px;
-    font-weight: 600;
+    /* border: 1px solid black; */
+    
+    font-size: 20px;
+    font-weight: 700;
 }
 
 

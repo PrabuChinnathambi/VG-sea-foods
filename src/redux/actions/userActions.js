@@ -13,3 +13,15 @@ export const getAdminProducts = (value) => {
         payload : value,
     };
 };
+
+export const registerToggle = () => {
+    return{
+        type : ActionTypes.SET_REGISTER
+    };
+};
+
+export const loginToggle = () => {
+    return{
+        type : ActionTypes.SET_LOGIN
+    };
+};

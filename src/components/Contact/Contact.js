@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Contact.css';
 import OpenPage from '../OpenPage/OpenPage';
 import contactImg from '../../images/contactImg.jpg';
@@ -14,6 +14,11 @@ import Footer from '../Footer/Footer';
 // import contactImg from '../../images/contactImg.jpg';
 
 function Contact() {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <div className="contact_page">
             <div className="contact_nav">

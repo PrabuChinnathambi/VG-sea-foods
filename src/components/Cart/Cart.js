@@ -298,8 +298,8 @@ function Cart() {
                                                 return (
                                                     <div className="cart_main">
                                                         <div key={item._id} className="payment_card">
-                                                            <p>{item.productName}</p>
-                                                            <p>{item.quantity}</p>
+                                                            <p className="productName" >{item.productName}</p>
+                                                            <p className="quantity" >{item.quantity}</p>
                                                             <p>×</p>
                                                             <p>₹{item.cost}</p>
                                                             <p>=</p>

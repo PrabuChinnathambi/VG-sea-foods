@@ -136,9 +136,7 @@ function Home() {
                 .then(data => {
                     console.log(data);
                     setLoader([])
-                    toast.success("Successfully added into the cart", {
-                        position: toast.POSITION.TOP_CENTER
-                    })
+                    toast("Successfully added into the cart")
                     getUserCart();
                 })
 

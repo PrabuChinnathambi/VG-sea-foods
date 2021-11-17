@@ -7,7 +7,9 @@
     background-repeat: no-repeat;
     background-size: cover; 
 }
-
+.welcome_container .welcome_buttons{
+    display: flex;
+}
 .welcome_page .logo{
     display: flex;
     align-items: center;
@@ -19,13 +21,13 @@
     font-weight: 700;
 }
 
-.welcome_page .greeting_msg{
+.welcome_page .welcome_container .greeting_msg{
     margin-left: 50px;
 }
-.welcome_page .greeting_msg .greeting_head{
+.welcome_page .welcome_container .greeting_msg .greeting_head{
     font-size: 30px;
 }
-.welcome_page .greeting_msg .greeting_body{
+.welcome_page .welcome_container .greeting_msg .greeting_body{
     font-size: 15px;
     width: 400px;
 }
@@ -34,14 +36,14 @@
     margin-left: 50px;
 }
 
-.welcome_page .button_group{
+.welcome_page .welcome_buttons .button_group{
     background-color: rgb(28, 215, 221);
     margin-left: 50px;
     margin-top: 80px;
     margin-bottom: 40px;
 }
 
-.welcome_page .button_group .button{
+.welcome_page .welcome_buttons .button_group .button{
     color: white;
     width: 150px;
     height: 50px;
@@ -54,8 +56,13 @@
     right: 60px;
 }
 .welcome_page .admint_button_div .admin_group{
-    background-color: rgb(28, 215, 221);
+    background-color: transparent;
     color: white;
+    border: 1.5px solid white;
+}
+.welcome_page .admint_button_div .admin_group :hover{
+    background-color: white;
+    color: black;
 }
 .welcome_page .admint_button_div .admin_button{
     color: white;
@@ -77,6 +84,7 @@
         width: 100%;
         height: 100vh;
         background: rgba(0, 0, 0, 0.5);
+        
     }
     .welcome_page .logo{
         margin-left: 25px;
@@ -90,20 +98,22 @@
         font-size: 20px;
         font-weight: 700;
     }
-    .welcome_page .greeting_msg{
-        margin-left: 20px;
-        margin-top: 60px;
+    .welcome_page .welcome_container .greeting_msg{
+        width: 300px;
+        margin-top: 50px;
+        margin-left: 30px;
+        
     }
-    .welcome_page .greeting_msg .greeting_head{
+    .welcome_page .welcome_container .greeting_msg .greeting_head{
         font-size: 30px;
     }
-    .welcome_page .greeting_msg .greeting_body{
-        margin-top: 30px;
+    .welcome_page .welcome_container .greeting_msg .greeting_body{
         font-size: 15px;
-        width: 360px;
+        width: 300px;
     }
+   
     .welcome_page .typewriter{
-        margin-top: 60px;
+        margin-top: 70px;
         margin-left: 30px;
     }
     
@@ -111,11 +121,15 @@
         margin-left: 5px;
         font-size: 30px;
     }
+    .welcome_page .welcome_buttons .button_group{
+        background-color: rgb(28, 215, 221);
+        margin-left: 30px;
+        margin-top: 100px;
+        margin-bottom: 40px;
+    }
     .welcome_page .button_group{
         background-color: rgb(28, 215, 221);
-        margin-left: 40px;
-        margin-top: 80px;
-        margin-bottom: 50px;
+        
     }
     .welcome_page .admint_button_div{
         position: absolute;

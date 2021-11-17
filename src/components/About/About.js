@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import OpenPage from '../OpenPage/OpenPage';
@@ -16,6 +16,10 @@ function About() {
 
     const state = useSelector(state => state.getproducts)
     console.log(state);
+    
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     return (
         <div className="about_page">
             <div className="about_nav">
