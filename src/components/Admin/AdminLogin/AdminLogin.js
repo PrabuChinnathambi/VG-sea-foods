@@ -17,7 +17,7 @@ function AdminLogin() {
 
     useEffect(() => {
         
-        Axios.get("http://localhost:8000/getItemData")
+        Axios.get("https://vgseafoods.herokuapp.com/getItemData")
             .then(res => {
                 dispatch(getAdminProducts(res.data));
             }).catch(err => {
