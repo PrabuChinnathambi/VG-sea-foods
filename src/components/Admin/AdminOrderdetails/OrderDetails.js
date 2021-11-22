@@ -17,7 +17,7 @@ function OrderDetails() {
     }, [])
 
     const getProducts = () => {
-        Axios.get("https://vgseafoods.herokuapp.com/getOrders")
+        Axios.get("https://vgseafoods.herokuapp.com/getAllOrders")
             .then(res => {
                 // console.log(res.data)
                 setOrderData(res.data);
