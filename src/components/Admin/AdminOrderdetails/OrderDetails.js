@@ -87,11 +87,11 @@ function OrderDetails() {
                     pauseOnHover
                 />
                 {
-                    orderData.slice().reverse().map(item => {
+                    orderData.slice().reverse().map((item, i) => {
                         return (
-                            <div className="orders" key={item._id}>
-                                <div>
-                                </div>
+            
+                            <div className="orders" key={i}>
+                                {/* <h3>{i}</h3> */}
                                 <span>
                                     <label>Name : </label>
                                     <p className="name">{item.addressDetails.name}</p>
@@ -127,9 +127,9 @@ function OrderDetails() {
                                     </button>
                                     <div className="dropdown-menu">
                                         {
-                                            item.orderDetails.map(val => {
+                                            item.orderDetails.map((val, i) => {
                                                 return (
-                                                    <div className="dropdown_list">
+                                                    <div key={i} className="dropdown_list">
                                                         <p className="product_name">{val.productName}</p>
                                                         <p >{val.quantity}Kg</p>
                                                     </div>
@@ -138,8 +138,6 @@ function OrderDetails() {
                                         }
                                     </div>
                                 </div>
-
-
                             </div>
                         )
                     })

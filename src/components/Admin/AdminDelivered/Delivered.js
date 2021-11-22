@@ -55,7 +55,7 @@ function Delivered() {
                         deliverState.map((item, i) => {
                             const rollNum = i + 1;
                             return (
-                                <Accordion expanded={expanded === item._id} onChange={handleChange(item._id)} className="accordian">
+                                <Accordion key={i} expanded={expanded === item._id} onChange={handleChange(item._id)} className="accordian">
                                     <AccordionSummary
                                         expandIcon={<ExpandMoreIcon />}
                                         aria-controls="panel1bh-content"
@@ -78,9 +78,9 @@ function Delivered() {
                                         <Typography className="typography">
                                             <div className="orderDetails">
                                                 {
-                                                    item.orderDetails.map(val => {
+                                                    item.orderDetails.map((val, il) => {
                                                         return (
-                                                            <div className="order_list">
+                                                            <div key={i} className="order_list">
                                                                 <p className="productName" >{val.productName}</p>
                                                                 <p >{val.quantity}Kg</p>
                                                                 <p >Rs.{val.cost}</p>

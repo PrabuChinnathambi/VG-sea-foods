@@ -245,11 +245,11 @@ function Cart() {
                     .then(res => {
                         setLoading(false)
                         console.log(res)
-                        emailjs.send("service_dr0tbcj", "template_3qfjypb", {
+                        emailjs.send("service_9afmy5n", "template_la1or5x", {
                             message: userorderDT,
                             user_email: userEmail,
                             user_name: userName,
-                        }, 'user_BYdBMHlMXkwBuEeeUawlc');
+                        }, 'user_KCguY86YogdOyw6hXP3if');
 
                     }).catch(err => {
                         console.log(err.message)
@@ -268,9 +268,9 @@ function Cart() {
         })
         handleClose();
 
-        // console.log(addresDetails)
-        // console.log(cartData);
-        // console.log(total);
+        console.log(addresDetails)
+        console.log(cartData);
+        console.log(total);
     }
 
     // console.log(total);

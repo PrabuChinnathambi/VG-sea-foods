@@ -5,19 +5,12 @@ import { Link } from 'react-router-dom';
 
 
 
+
+
 function OpenPage() {
     const [navcolor, setNavcolor] = useState(false);
 
     
-
-    window.onscroll = () => {
-        if (document.body.scrollTop >= 50 || document.documentElement.scrollTop >= 50) {
-            // console.log("scrolled")
-            setNavcolor(true);
-        } else {
-            setNavcolor(false)
-        }
-    }
 
     return (
         <div className={navcolor ? "navColored" : "navNonClored"}>
@@ -39,13 +32,17 @@ function OpenPage() {
                                     <li><Link to="/contact" className="links">Contact</Link></li>
                                     <li><Link to="/cart" className="links">Cart</Link></li>
                                     <li><Link to="/" className="links">Logout</Link></li>
+
                                 </ul>
                             </ul>
-                            
+
                         </div>
                     </div>
                 </nav>
+
             </div>
+           
+
         </div>
     )
 }
