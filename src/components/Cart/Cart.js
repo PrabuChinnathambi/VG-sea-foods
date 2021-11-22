@@ -212,61 +212,61 @@ function Cart() {
     }
 
     const handlesuccess = () => {
-        handleRazorPayment();
+        // handleRazorPayment();
 
-        // setLoading(true);
-        // const timestamp = Date.now();
-        // const payload = {
-        //     userInfo: userNew,
-        //     addressDetails: addresDetails,
-        //     orderDetails: cartData,
-        //     totalAmount: total,
-        //     time: timestamp
-        // }
+        setLoading(true);
+        const timestamp = Date.now();
+        const payload = {
+            userInfo: userNew,
+            addressDetails: addresDetails,
+            orderDetails: cartData,
+            totalAmount: total,
+            time: timestamp
+        }
 
-        // console.log(payload);
+        console.log(payload);
 
-        // const userpayload = {
-        //     userId: userId
-        // }
+        const userpayload = {
+            userId: userId
+        }
 
-        // const userName = addresDetails.name;
-        // const userEmail = userNew.email;
-        // const userorderDT = `You have ordered ${cartData.length} products. Details : ${cartData.map(item => {
-        //     return (
-        //         ` ${item.productName} ${item.quantity}kg`)
-        // })} Total cost : Rs.${total}.  The products will reach you within a minutes. Thanks for your order.`
-
-
-        // Axios.post("https://vgseafoods.herokuapp.com/bookOrder", payload)
-        //     .then(res => {
-        //         console.log(res);
-        //         Axios.post("https://vgseafoods.herokuapp.com/deleteAllCart", userpayload)
-        //             .then(res => {
-        //                 setLoading(false)
-        //                 console.log(res)
-        //                 emailjs.send("service_dr0tbcj", "template_3qfjypb", {
-        //                     message: userorderDT,
-        //                     user_email: userEmail,
-        //                     user_name: userName,
-        //                 }, 'user_BYdBMHlMXkwBuEeeUawlc');
-
-        //             }).catch(err => {
-        //                 console.log(err.message)
-        //             })
-        //         handleOpenSuccess();
+        const userName = addresDetails.name;
+        const userEmail = userNew.email;
+        const userorderDT = `You have ordered ${cartData.length} products. Details : ${cartData.map(item => {
+            return (
+                ` ${item.productName} ${item.quantity}kg`)
+        })} Total cost : Rs.${total}.  The products will reach you within a minutes. Thanks for your order.`
 
 
-        //     }).catch(err => {
-        //         console.log(err.message);
-        //     })
+        Axios.post("https://vgseafoods.herokuapp.com/bookOrder", payload)
+            .then(res => {
+                console.log(res);
+                Axios.post("https://vgseafoods.herokuapp.com/deleteAllCart", userpayload)
+                    .then(res => {
+                        setLoading(false)
+                        console.log(res)
+                        emailjs.send("service_dr0tbcj", "template_3qfjypb", {
+                            message: userorderDT,
+                            user_email: userEmail,
+                            user_name: userName,
+                        }, 'user_BYdBMHlMXkwBuEeeUawlc');
 
-        // setAddresDetails({
-        //     name: "",
-        //     phonenumber: "",
-        //     address: ""
-        // })
-        // handleClose();
+                    }).catch(err => {
+                        console.log(err.message)
+                    })
+                handleOpenSuccess();
+
+
+            }).catch(err => {
+                console.log(err.message);
+            })
+
+        setAddresDetails({
+            name: "",
+            phonenumber: "",
+            address: ""
+        })
+        handleClose();
 
         // console.log(addresDetails)
         // console.log(cartData);
