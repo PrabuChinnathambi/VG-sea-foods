@@ -3,7 +3,9 @@ import './OpenPage.css';
 import Logo from '../../images/newlogo2.png';
 import { Link } from 'react-router-dom';
 
-
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 
 
@@ -11,6 +13,15 @@ function OpenPage() {
     const [navcolor, setNavcolor] = useState(false);
 
     
+
+    window.onscroll = () => {
+        if (document.body.scrollTop >= 50 || document.documentElement.scrollTop >= 50) {
+            // console.log("scrolled")
+            setNavcolor(true);
+        } else {
+            setNavcolor(false)
+        }
+    }
 
     return (
         <div className={navcolor ? "navColored" : "navNonClored"}>
@@ -31,8 +42,20 @@ function OpenPage() {
                                     <li><Link to="/about" className="links">About</Link></li>
                                     <li><Link to="/contact" className="links">Contact</Link></li>
                                     <li><Link to="/cart" className="links">Cart</Link></li>
-                                    <li><Link to="/" className="links">Logout</Link></li>
+                                    {/* <li><Link to="/" className="links">Logout</Link></li> */}
 
+                                    <div>
+                                        <Button
+                                            id="basic-button"
+                                            aria-controls="basic-menu"
+                                            aria-haspopup="true"
+                                            aria-expanded={open ? 'true' : undefined}
+                                            onClick={handleClick}
+                                        >
+                                            Dashboard
+                                        </Button>
+
+                                    </div>
                                 </ul>
                             </ul>
 
@@ -41,8 +64,25 @@ function OpenPage() {
                 </nav>
 
             </div>
-           
+            <div className="drop_menu">
+ <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                    'aria-labelledby': 'basic-button',
+                }}
 
+                
+
+            >
+                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose}>Logout</MenuItem>
+            </Menu>
+            </div>
+           
         </div>
     )
 }
