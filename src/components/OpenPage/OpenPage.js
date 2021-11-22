@@ -3,8 +3,12 @@ import './OpenPage.css';
 import Logo from '../../images/newlogo2.png';
 import { Link } from 'react-router-dom';
 
+
+
 function OpenPage() {
     const [navcolor, setNavcolor] = useState(false);
+
+    
 
     window.onscroll = () => {
         if (document.body.scrollTop >= 50 || document.documentElement.scrollTop >= 50) {
@@ -37,10 +41,10 @@ function OpenPage() {
                                     <li><Link to="/" className="links">Logout</Link></li>
                                 </ul>
                             </ul>
+                            
                         </div>
                     </div>
                 </nav>
-
             </div>
         </div>
     )

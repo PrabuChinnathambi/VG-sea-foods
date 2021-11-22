@@ -26,6 +26,7 @@ function AdminItems() {
     const [loader, setLoader] = useState(true);
     const [pulseLoaderID, setPulseLoaderID] = useState([]);
     const [pulseToggler, setPulseToggler] = useState(false);
+    const [counts, setCounts] = useState([]);
 
 
 
@@ -33,14 +34,11 @@ function AdminItems() {
 
     useEffect(() => {
         getProducts();
-
+        getCounts();
     }, []);
 
 
     const getProducts = async () => {
-        getAllOrder();
-        getDeliverdOrders();
-        getAllUser();
 
         await Axios.get("https://vgseafoods.herokuapp.com/getItemData")
             .then(res => {
@@ -52,33 +50,15 @@ function AdminItems() {
             });
 
     }
-    const getAllOrder = () => {
-        Axios.get("https://vgseafoods.herokuapp.com/getOrders")
-            .then(res => {
-                SetAllProducts(res.data);
-                // console.log(res.data);
-            }).catch(err => {
-                console.log(err)
-            });
+
+    const getCounts = async () => {
+        await Axios.get('https://vgseafoods.herokuapp.com/getCounts')
+        .then((res => {
+            console.log(res);
+            setCounts(res.data);
+        }))
     }
-    const getDeliverdOrders = () => {
-        Axios.get("https://vgseafoods.herokuapp.com/getDeliverd")
-            .then(res => {
-                SetDeliverdOrders(res.data);
-                // console.log(res.data);
-            }).catch(err => {
-                console.log(err)
-            });
-    }
-    const getAllUser = () => {
-        Axios.get("https://vgseafoods.herokuapp.com/getAlluser")
-            .then(res => {
-                SetUserData(res.data);
-                // console.log(res.data);
-            }).catch(err => {
-                console.log(err)
-            });
-    }
+    
 
     const convertBase64 = (file) => {
         return new Promise((resolve, reject) => {
@@ -219,19 +199,19 @@ function AdminItems() {
                 <div className="greeting_counts">
                     <div className="clients_counts">
                         <p>Number of Clients</p>
-                        <h2>{userData.length}</h2>
+                        <h2>{counts.clientCounts}</h2>
                     </div>
                     <div className="total_Book">
                         <p>Total Bookings</p>
-                        <h2>{allProducts.length + deliverdOrders.length}</h2>
+                        <h2>{counts.totalOrderCounts}</h2>
                     </div>
                     <div className="pending_orders">
                         <p>Pending Orders</p>
-                        <h2>{allProducts.length}</h2>
+                        <h2>{counts.pendingCounts}</h2>
                     </div>
                     <div className="delivered_orders">
                         <p>Delivered Orders</p>
-                        <h2>{deliverdOrders.length}</h2>
+                        <h2>{counts.deliverdCounts}</h2>
                     </div>
 
                 </div>

@@ -30,6 +30,9 @@
     list-style: none;
     color: white;
 }
+.nav_page .navbar-nav .menus .menu_item{
+    background-color: black;
+}
 .nav_page .navbar-nav ul li .links{
     text-decoration: none;
     color: white;

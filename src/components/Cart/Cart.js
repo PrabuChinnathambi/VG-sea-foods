@@ -10,6 +10,7 @@ import OpenPage from '../OpenPage/OpenPage';
 import cartImg from '../../images/cartImg.jpg';
 import arrow from '../../images/Icons/double-down.png';
 import Footer from '../Footer/Footer';
+import Logo from '../../images/newlogo2.png';
 
 import { ToastContainer, toast } from 'react-toastify';
 import Box from '@mui/material/Box';
@@ -29,6 +30,8 @@ const style = {
     boxShadow: 24,
     p: 4,
 };
+
+
 
 
 
@@ -66,6 +69,8 @@ function Cart() {
         getCartData();
 
     }, [])
+
+
 
     const handleClickOpen = () => {
 
@@ -154,60 +159,114 @@ function Cart() {
         // window.location.reload();
     }
 
+    const handleRazorPayment = async () => {
+
+        const res = await Axios.get('http://localhost:8000/order');
+        console.log(res);
+
+        if (res.status !== 200) {
+            return;
+        }
+
+
+
+
+        var options = {
+            key: "rzp_test_2HSv4xqh8ch9AI", // Enter the Key ID generated from the Dashboard
+            amount: res.data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            currency: res.data.currency,
+            name: "VG Sea Foods",
+            description: res.data.notes.desc,
+            image: "https://example.com/your_logo",
+            order_id: res.data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            handler: function (response) {
+                alert(response.razorpay_payment_id);
+                alert(response.razorpay_order_id);
+                alert(response.razorpay_signature)
+            },
+            prefill: {
+                name: "Gaurav Kumar",
+                email: "gaurav.kumar@example.com",
+                contact: "9999999999"
+            },
+            // notes: {
+            //     address: "Razorpay Corporate Office"
+            // },
+            // theme: {
+            //     color: "#3399cc"
+            // }
+        };
+        var rzp1 = new window.Razorpay(options);
+
+        rzp1.open();
+
+        rzp1.on('payment.failed', function (response) {
+            alert(response.error.code);
+            alert(response.error.description);
+            alert(response.error.source);
+            alert(response.error.step);
+            alert(response.error.reason);
+            alert(response.error.metadata.order_id);
+            alert(response.error.metadata.payment_id);
+        });
+    }
+
     const handlesuccess = () => {
-        setLoading(true);
-        const timestamp = Date.now();
-        const payload = {
-            userInfo: userNew,
-            addressDetails: addresDetails,
-            orderDetails: cartData,
-            totalAmount: total,
-            time: timestamp
-        }
+        handleRazorPayment();
 
-        console.log(payload);
+        // setLoading(true);
+        // const timestamp = Date.now();
+        // const payload = {
+        //     userInfo: userNew,
+        //     addressDetails: addresDetails,
+        //     orderDetails: cartData,
+        //     totalAmount: total,
+        //     time: timestamp
+        // }
 
-        const userpayload = {
-            userId: userId
-        }
+        // console.log(payload);
 
-        const userName = addresDetails.name;
-        const userEmail = userNew.email;
-        const userorderDT = `You have ordered ${cartData.length} products. Details : ${cartData.map(item => {
-            return (
-                ` ${item.productName} ${item.quantity}kg`)
-        })} Total cost : Rs.${total}.  The products will reach you within a minutes. Thanks for your order.`
+        // const userpayload = {
+        //     userId: userId
+        // }
 
-
-        Axios.post("https://vgseafoods.herokuapp.com/bookOrder", payload)
-            .then(res => {
-                console.log(res);
-                Axios.post("https://vgseafoods.herokuapp.com/deleteAllCart", userpayload)
-                    .then(res => {
-                        setLoading(false)
-                        console.log(res)
-                        emailjs.send("service_dr0tbcj", "template_3qfjypb", {
-                            message: userorderDT,
-                            user_email: userEmail,
-                            user_name: userName,
-                        }, 'user_BYdBMHlMXkwBuEeeUawlc');
-                        
-                    }).catch(err => {
-                        console.log(err.message)
-                    })
-                handleOpenSuccess();
+        // const userName = addresDetails.name;
+        // const userEmail = userNew.email;
+        // const userorderDT = `You have ordered ${cartData.length} products. Details : ${cartData.map(item => {
+        //     return (
+        //         ` ${item.productName} ${item.quantity}kg`)
+        // })} Total cost : Rs.${total}.  The products will reach you within a minutes. Thanks for your order.`
 
 
-            }).catch(err => {
-                console.log(err.message);
-            })
+        // Axios.post("https://vgseafoods.herokuapp.com/bookOrder", payload)
+        //     .then(res => {
+        //         console.log(res);
+        //         Axios.post("https://vgseafoods.herokuapp.com/deleteAllCart", userpayload)
+        //             .then(res => {
+        //                 setLoading(false)
+        //                 console.log(res)
+        //                 emailjs.send("service_dr0tbcj", "template_3qfjypb", {
+        //                     message: userorderDT,
+        //                     user_email: userEmail,
+        //                     user_name: userName,
+        //                 }, 'user_BYdBMHlMXkwBuEeeUawlc');
 
-        setAddresDetails({
-            name: "",
-            phonenumber: "",
-            address: ""
-        })
-        handleClose();
+        //             }).catch(err => {
+        //                 console.log(err.message)
+        //             })
+        //         handleOpenSuccess();
+
+
+        //     }).catch(err => {
+        //         console.log(err.message);
+        //     })
+
+        // setAddresDetails({
+        //     name: "",
+        //     phonenumber: "",
+        //     address: ""
+        // })
+        // handleClose();
 
         // console.log(addresDetails)
         // console.log(cartData);

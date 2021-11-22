@@ -151,6 +151,7 @@ background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, F
   select {
     background: rgba(255,255,255,0.1);
     border: none;
+    border-radius: 10px;
     font-size: 16px;
     height: auto;
     margin: 0;
