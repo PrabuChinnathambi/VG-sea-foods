@@ -2,12 +2,19 @@ import React, { useState } from 'react';
 import './OpenPage.css';
 import Logo from '../../images/newlogo2.png';
 import { Link } from 'react-router-dom';
+import Cookies from 'universal-cookie';
+import { useHistory } from 'react-router-dom'
 
 
 
+
+const cookies = new Cookies();
 
 
 function OpenPage() {
+
+    const history = new useHistory();
+    
     const [navcolor, setNavcolor] = useState(false);
 
     
@@ -19,6 +26,12 @@ function OpenPage() {
         } else {
             setNavcolor(false)
         }
+    }
+
+    const hanldeLogout = () => {
+        cookies.remove('token');
+        history.push('/');
+        window.location.reload();
     }
 
     return (
@@ -40,7 +53,7 @@ function OpenPage() {
                                     <li><Link to="/about" className="links">About</Link></li>
                                     <li><Link to="/contact" className="links">Contact</Link></li>
                                     <li><Link to="/cart" className="links">Cart</Link></li>
-                                    <li><Link to="/" className="links">Logout</Link></li> 
+                                    <li><Link to="/" onClick={hanldeLogout} className="links">Logout</Link></li> 
                                 </ul>
                             </ul>
 

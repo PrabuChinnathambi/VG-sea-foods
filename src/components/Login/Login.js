@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './Login.css';
+import Cookies from 'universal-cookie';
 import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
@@ -8,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setUser } from '../../redux/actions/userActions';
 
 
-
+const cookies = new Cookies();
 
 function Login() {
 
@@ -76,6 +77,7 @@ function Login() {
             Axios.post('https://vgseafoods.herokuapp.com/loginUser', payload)
                 .then(res => {
                     dispatch(setUser(res.data.userData));
+                    cookies.set('token', res.data.token);
                     localStorage.setItem("token", res.data.token);
                     console.log(localStorage.getItem("token"));
                     setSignIn({

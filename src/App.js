@@ -11,7 +11,13 @@ import Login from "./components/Login/Login";
 import OpenPage from "./components/OpenPage/OpenPage";
 import Welcome from "./components/Welcome/Welcome";
 
+import Cookies from 'universal-cookie';
 
+
+
+const cookies = new Cookies();
+
+const authToken = cookies.get('token');
 
 
 function App() {
@@ -19,9 +25,10 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/" component={Welcome} ></Route>
+          {
+            authToken  ? <Route exact path="/" component={Home} ></Route> : <Route exact path="/" component={Welcome} ></Route>
+          }
           <Route path="/login" component={Login} ></Route>
-          {/* <Route exact path="/" component={OpenPage} ></Route> */}
           <Route path="/home" component={Home} ></Route>
           <Route path="/about" component={About} ></Route>
           <Route path="/contact" component={Contact} ></Route>
