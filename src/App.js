@@ -24,17 +24,15 @@ const authToken1 = JSON.parse(localStorage.getItem("token"));
 console.log(authToken1);
 
 
-
-
 function App() {
 
- 
+
   return (
     <div className="App">
       <Router>
         <Switch>
           {
-            authToken1 ? <Route exact path="/" component={Home} ></Route> : <Route exact path="/" component={Welcome} ></Route>
+            authToken1 === "" || authToken1 === undifined ? <Route exact path="/" component={Welcome} ></Route> : <Route exact path="/" component={Home} ></Route>
           }
           <Route path="/login" component={Login} ></Route>
           <Route path="/home" component={Home} ></Route>
