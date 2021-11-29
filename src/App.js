@@ -11,22 +11,30 @@ import Login from "./components/Login/Login";
 import OpenPage from "./components/OpenPage/OpenPage";
 import Welcome from "./components/Welcome/Welcome";
 
-import Cookies from 'universal-cookie';
+// import Cookies from 'universal-cookie';
+import { useEffect } from "react";
 
 
 
-const cookies = new Cookies();
+// const cookies = new Cookies();
 
-const authToken = cookies.get('token');
+// // const authToken = cookies.get('token');
+
+const authToken1 = JSON.parse(localStorage.getItem("token"));
+console.log(authToken1);
+
+
 
 
 function App() {
+
+ 
   return (
     <div className="App">
       <Router>
         <Switch>
           {
-            authToken  ? <Route exact path="/" component={Home} ></Route> : <Route exact path="/" component={Welcome} ></Route>
+            authToken1 ? <Route exact path="/" component={Home} ></Route> : <Route exact path="/" component={Welcome} ></Route>
           }
           <Route path="/login" component={Login} ></Route>
           <Route path="/home" component={Home} ></Route>

@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom'
 
 
 
-const cookies = new Cookies();
+// const cookies = new Cookies();
 
 
 function OpenPage() {
@@ -29,7 +29,7 @@ function OpenPage() {
     }
 
     const hanldeLogout = () => {
-        cookies.remove('token');
+        localStorage.clear();
         history.push('/');
         window.location.reload();
     }

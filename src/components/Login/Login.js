@@ -77,8 +77,8 @@ function Login() {
             Axios.post('https://vgseafoods.herokuapp.com/loginUser', payload)
                 .then(res => {
                     dispatch(setUser(res.data.userData));
-                    cookies.set('token', res.data.token);
-                    localStorage.setItem("token", res.data.token);
+                    cookies.set('token', JSON.stringify(res.data.token));
+                    localStorage.setItem("token", JSON.stringify(res.data.token));
                     console.log(localStorage.getItem("token"));
                     setSignIn({
                         email: "",
