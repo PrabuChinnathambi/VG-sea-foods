@@ -32,7 +32,7 @@ function App() {
       <Router>
         <Switch>
           {
-            authToken1 === "" || authToken1 === undifined ? <Route exact path="/" component={Welcome} ></Route> : <Route exact path="/" component={Home} ></Route>
+            authToken1 === "" || !authToken1 ? <Route exact path="/" component={Welcome} ></Route> : <Route exact path="/" component={Home} ></Route>
           }
           <Route path="/login" component={Login} ></Route>
           <Route path="/home" component={Home} ></Route>
