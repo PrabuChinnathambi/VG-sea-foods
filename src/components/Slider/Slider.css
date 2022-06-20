@@ -59,5 +59,17 @@
     }
 }
 
+@media only screen and (min-width: 1200px) {
+    .slider_page .slider_container .carousel .slides{
+        display: flex;
+        position: relative;
+        height: 600px;
+    }
+    .slider_page .slider_container .carousel .slides img{
+        object-fit: cover;
+    }
+    
+}
+
 
 

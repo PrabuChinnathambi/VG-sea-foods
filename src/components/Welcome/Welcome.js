@@ -45,6 +45,7 @@ function Welcome() {
                     <img src={logo} alt="logo" />
                     <p>Sea Foods</p>
                 </div>
+                <div>
                 <div className="greeting_msg">
                     <p className="greeting_head">Our <span style={{ color: 'red', fontWeight: 'bold' }}>Promise</span></p>
                     <p className="greeting_body">Most companies have fancy mission statements. Ours is simple. We want to help you eat the best meat possible. That's it.  </p>
@@ -74,6 +75,7 @@ function Welcome() {
                     <ButtonGroup className="button_group" variant="outlined" aria-label="outlined primary button group"  >
                         <Link onClick={handleRegisterToggle} style={{ textDecoration: "none" }} to="/login"><Button className="button">Register</Button></Link>
                     </ButtonGroup>
+                </div>
                 </div>
                 <div className="admint_button_div">
                     <ButtonGroup className="admin_group" variant="outlined" aria-label="outlined primary button group"  >

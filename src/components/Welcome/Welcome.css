@@ -69,6 +69,31 @@
     width: 100px;
 }
 
+@media only screen and (min-width: 1200px){
+    .welcome_page .welcome_container .greeting_msg{
+        margin-left: 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+    .welcome_page .welcome_container .greeting_msg .greeting_head{
+        font-size: 4rem;
+    }
+    .welcome_page .welcome_container .greeting_msg .greeting_body{
+        font-size: 1.5rem;
+        width: 50%;
+    }
+    .welcome_page .welcome_buttons{
+
+    }
+    .welcome_page .welcome_buttons .button_group .button{
+        color: white;
+        width: 350px;
+        height: 70px;
+        font-size: 22px;
+    }
+
+}   
 
 @media only screen and (max-width: 600px){
     .welcome_page{
